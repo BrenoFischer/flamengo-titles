@@ -16,5 +16,7 @@ export const UpperHeader = styled.div`
   img {
     height: 10rem;
     /* box-shadow: 0 0 15px #000; */
+    -webkit-filter: drop-shadow(0 0 3px #000);
+    filter: drop-shadow(0 0 3px #000);
   }
 `
