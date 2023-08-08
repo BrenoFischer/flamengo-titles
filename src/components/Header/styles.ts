@@ -6,7 +6,7 @@ export const UpperHeader = styled.div`
   width: 100%;
 
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   box-shadow: 0 0 15px #000;
 
@@ -17,14 +17,27 @@ export const UpperHeader = styled.div`
   font-size: 1.5rem;
   color: ${(props) => props.theme.black};
 
+  transition: all 0.2 ease-out;
+
+  div {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+
+    p {
+      display: inline-block;
+    }
+  }
+
   span {
     color: ${(props) => props.theme.white};
   }
 
   img {
-    position: relative;
-    top: 50%;
-    right: 0;
+    position: absolute;
+    top: 100%;
+    right: 50%;
+    transform: translate(50%, -50%);
     height: 10rem;
     -webkit-filter: drop-shadow(0 0 3px #000);
     filter: drop-shadow(0 0 3px #000);
