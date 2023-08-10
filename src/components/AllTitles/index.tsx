@@ -17,6 +17,10 @@ export default function AllTitles() {
 
   return (
     <AllTitlesContainer>
+      <h1>
+        Conheça as principais glórias do Flamengo ao longo de mais um século de
+        história:
+      </h1>
       <ul>
         <TitleCategory category="Libertadores" titles={libertadoresTitles} />
         <TitleCategory category="Brasileiro" titles={brasileiroTitles} />

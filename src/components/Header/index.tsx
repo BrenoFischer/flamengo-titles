@@ -71,8 +71,6 @@ export default function Header() {
     return () => clearInterval(interval)
   }, [phraseIndex])
 
-  console.log(phraseIndex)
-
   return (
     <header>
       <UpperHeader>
