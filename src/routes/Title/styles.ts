@@ -94,4 +94,50 @@ export const TopScorerContainer = styled(SectionLayout)`
   }
 `
 
-export const SquadContainer = styled(SectionLayout)``
+export const SquadContainer = styled(SectionLayout)`
+  table {
+    border-collapse: collapse;
+    min-width: 50px;
+    box-shadow:
+      rgba(18, 30, 39, 0.2) 5px 5px,
+      rgba(18, 30, 39, 0.2) 10px 10px;
+
+    th {
+      background-color: ${(props) => props.theme.red};
+      padding: 0.5rem;
+      text-align: left;
+      color: ${(props) => props.theme.white};
+      font-family: 'Titillium Web', sans-serif;
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+
+    th:first-child {
+      border-top-left-radius: 8px;
+      padding-left: 1.5rem;
+    }
+
+    th:last-child {
+      border-top-right-radius: 8px;
+      padding-right: 1.5rem;
+    }
+
+    td {
+      border-top: 3px solid ${(props) => props.theme.black};
+      padding: 0.5rem;
+      font-size: 1rem;
+      font-family: 'Titillium Web', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    td:first-child {
+      width: 40%;
+      padding-left: 1.5rem;
+    }
+
+    td:last-child {
+      padding-right: 1.5rem;
+    }
+  }
+`
