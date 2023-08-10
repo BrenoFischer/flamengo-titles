@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getFirestore, collection, getDocs } from 'firebase/firestore'
+import { getFirestore, getDoc, doc } from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBwDHFfdMxVghAgTuAp0wmGBfmoxoD4xcA',
@@ -15,11 +15,8 @@ initializeApp(firebaseConfig)
 export const db = getFirestore()
 
 export const getTitleInformation = async (category: string, year: string) => {
-  const querySnapshot = await getDocs(
-    collection(db, 'titlesCategories', category.toLowerCase(), year),
-  )
+  const ref = doc(db, 'titlesCategories', category.toLowerCase())
+  const docSnap = await getDoc(ref)
 
-  querySnapshot.forEach((doc) => {
-    console.log(doc.id, ' => ', doc.data())
-  })
+  return docSnap.data()![year]
 }

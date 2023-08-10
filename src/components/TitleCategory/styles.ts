@@ -3,6 +3,11 @@ import { styled } from 'styled-components'
 export const TitleCategoryContainer = styled.li`
   list-style: none;
 
+  a {
+    text-decoration: none;
+    color: ${(props) => props.theme.black};
+  }
+
   &:not(:last-child) {
     margin-bottom: 5rem;
   }

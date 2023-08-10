@@ -1,5 +1,5 @@
 import { TitleCategoryContainer } from './styles'
-import { getTitleInformation } from '../../utils/firebase/firebase'
+import { Link } from 'react-router-dom'
 
 interface TitleCategoryProps {
   category: string
@@ -12,10 +12,6 @@ export default function TitleCategory({
 }: TitleCategoryProps) {
   const quantityOfTitles = titles.length
 
-  async function handleGetTitleInformation(title: string) {
-    await getTitleInformation(category, title)
-  }
-
   return (
     <TitleCategoryContainer>
       <h2>
@@ -23,9 +19,9 @@ export default function TitleCategory({
       </h2>
       <div>
         {titles.map((title) => (
-          <p key={title} onClick={() => handleGetTitleInformation(title)}>
-            {title}
-          </p>
+          <Link key={title} to={`title/${category}/${title}`}>
+            <p>{title}</p>
+          </Link>
         ))}
       </div>
     </TitleCategoryContainer>
