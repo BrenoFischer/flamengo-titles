@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getTitleInformation } from '../../utils/firebase/firebase'
 import {
+  FootballFieldWrapper,
   LastMatchContainer,
   SquadContainer,
+  SquadInformationContainer,
   TitleContainer,
   TopScorerContainer,
 } from './styles'
 import ReactCountryFlag from 'react-country-flag'
+import FootballField from '../../assets/football-field.png'
 
 interface WinningSquadPlayers {
   1: string
@@ -145,25 +148,34 @@ export default function Title() {
               <h2>
                 <span>|</span> Elenco Campeão
               </h2>
-              <table>
-                <tr>
-                  <th>Nº</th>
-                  <th>Nome</th>
-                </tr>
-                {[...Array.from({ length: 11 }, (_, i) => i + 1)].map(
-                  (player) => (
-                    <PlayerTableRow
-                      key={player}
-                      playerName={
-                        titleInformation.winningSquad.players[
-                          player.toString() as unknown as keyof WinningSquadPlayers
-                        ]
-                      }
-                      playerNumber={player.toString()}
-                    />
-                  ),
-                )}
-              </table>
+              <SquadInformationContainer>
+                <table>
+                  <tr>
+                    <th>Nº</th>
+                    <th>Nome</th>
+                  </tr>
+                  {[...Array.from({ length: 11 }, (_, i) => i + 1)].map(
+                    (player) => (
+                      <PlayerTableRow
+                        key={player}
+                        playerName={
+                          titleInformation.winningSquad.players[
+                            player.toString() as unknown as keyof WinningSquadPlayers
+                          ]
+                        }
+                        playerNumber={player.toString()}
+                      />
+                    ),
+                  )}
+                </table>
+
+                <FootballFieldWrapper>
+                  <img
+                    src={FootballField}
+                    alt="Football Field with winning squad"
+                  />
+                </FootballFieldWrapper>
+              </SquadInformationContainer>
             </SquadContainer>
 
             <TopScorerContainer>

@@ -97,7 +97,7 @@ export const TopScorerContainer = styled(SectionLayout)`
 export const SquadContainer = styled(SectionLayout)`
   table {
     border-collapse: collapse;
-    min-width: 50px;
+    min-width: 300px;
     box-shadow:
       rgba(18, 30, 39, 0.2) 5px 5px,
       rgba(18, 30, 39, 0.2) 10px 10px;
@@ -139,5 +139,20 @@ export const SquadContainer = styled(SectionLayout)`
     td:last-child {
       padding-right: 1.5rem;
     }
+  }
+`
+
+export const SquadInformationContainer = styled.div`
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 20rem;
+`
+
+export const FootballFieldWrapper = styled.div`
+  /* max-height: 20rem; */
+  position: relative;
+
+  img {
+    max-height: 35rem;
   }
 `
