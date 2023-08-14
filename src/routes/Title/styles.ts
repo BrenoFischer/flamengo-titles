@@ -138,6 +138,11 @@ export const SquadContainer = styled(SectionLayout)`
     td:last-child {
       padding-right: 1.5rem;
     }
+
+    tr:last-child {
+      background-color: ${(props) => props.theme.black};
+      color: ${(props) => props.theme.white};
+    }
   }
 `
 

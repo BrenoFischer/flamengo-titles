@@ -47,7 +47,7 @@ interface TitleInformation {
   }
   winningSquad: {
     formation: string
-    coach: string
+    coach: { name: string; country: string }
     players: WinningSquadPlayers
   }
 }
@@ -67,7 +67,7 @@ export default function Title() {
     },
     winningSquad: {
       formation: '',
-      coach: '',
+      coach: { name: '', country: '' },
       players: {
         1: { name: '', nationality: '', number: '' },
         2: { name: '', nationality: '', number: '' },
@@ -267,6 +267,19 @@ export default function Title() {
                         )
                       },
                     )}
+                    <tr>
+                      <td>Técnico</td>
+                      <td>
+                        <ReactCountryFlag
+                          svg
+                          countryCode={
+                            titleInformation.winningSquad.coach.country
+                          }
+                          style={{ width: '2rem' }}
+                        />
+                      </td>
+                      <td>{titleInformation.winningSquad.coach.name}</td>
+                    </tr>
                   </tbody>
                 </table>
 
