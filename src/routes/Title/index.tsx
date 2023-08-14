@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { getTitleInformation } from '../../utils/firebase/firebase'
 import {
   FootballFieldWrapper,
+  FormationWrapper,
   LastMatchContainer,
   PlayerOnField,
   SquadContainer,
@@ -289,6 +290,10 @@ export default function Title() {
                     alt="Football Field with winning squad"
                   />
                   <WinningPlayers />
+                  <FormationWrapper>
+                    <span>Formação principal:</span>
+                    {titleInformation.winningSquad.formation}
+                  </FormationWrapper>
                 </FootballFieldWrapper>
               </SquadInformationContainer>
             </SquadContainer>

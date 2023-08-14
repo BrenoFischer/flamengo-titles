@@ -217,3 +217,20 @@ export const PlayerOnField = styled.div<PlayersOnFieldProps>`
     font-weight: 600;
   }
 `
+
+export const FormationWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  color: ${(props) => props.theme.black};
+  font-size: 1.6rem;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 600;
+
+  span {
+    color: ${(props) => props.theme.red};
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+`
