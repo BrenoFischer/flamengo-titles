@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import * as Checkbox from '@radix-ui/react-checkbox'
 import { getTitleInformation } from '../../utils/firebase/firebase'
 import {
+  CheckboxComponent,
+  CheckboxIcon,
+  CheckboxWrapper,
   FootballFieldWrapper,
   FormationWrapper,
   LastMatchContainer,
@@ -54,6 +58,7 @@ interface TitleInformation {
 }
 
 export default function Title() {
+  const [showPlayers, setShowPlayers] = useState(false)
   const [titleInformation, setTitleInformation] = useState<TitleInformation>({
     coverImg: '',
     finalMatch: {
@@ -191,6 +196,7 @@ export default function Title() {
               key={player}
               left={playersPositionOnField[player - 1][0]}
               top={playersPositionOnField[player - 1][1]}
+              showPlayersNames={showPlayers}
             >
               {playerInfo.number}
               <div>{playerInfo.name}</div>
@@ -285,6 +291,20 @@ export default function Title() {
                 </table>
 
                 <FootballFieldWrapper>
+                  <CheckboxWrapper>
+                    <CheckboxComponent
+                      id="show-players"
+                      checked={showPlayers}
+                      onCheckedChange={() => setShowPlayers(!showPlayers)}
+                    >
+                      <Checkbox.Indicator>
+                        {showPlayers === true && <CheckboxIcon />}
+                      </Checkbox.Indicator>
+                    </CheckboxComponent>
+                    <label htmlFor="show-players">
+                      Mostrar nome dos jogadores
+                    </label>
+                  </CheckboxWrapper>
                   <img
                     src={FootballField}
                     alt="Football Field with winning squad"

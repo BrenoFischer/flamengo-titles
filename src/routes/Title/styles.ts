@@ -1,4 +1,6 @@
 import { styled } from 'styled-components'
+import * as Checkbox from '@radix-ui/react-checkbox'
+import { CheckIcon } from '@radix-ui/react-icons'
 
 export const TitleContainer = styled.div`
   header {
@@ -151,6 +153,35 @@ export const SquadInformationContainer = styled.div`
   gap: 20rem;
 `
 
+export const CheckboxWrapper = styled.div`
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  label {
+    color: ${(props) => props.theme.black};
+    font-size: 1rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+  }
+`
+
+export const CheckboxComponent = styled(Checkbox.Root)`
+  height: 1rem;
+  width: 1rem;
+  position: relative;
+
+  padding: 0.5rem;
+`
+
+export const CheckboxIcon = styled(CheckIcon)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`
+
 export const FootballFieldWrapper = styled.div`
   position: relative;
   max-height: 35rem;
@@ -163,6 +194,7 @@ export const FootballFieldWrapper = styled.div`
 interface PlayersOnFieldProps {
   left: string
   top: string
+  showPlayersNames: boolean
 }
 
 export const PlayerOnField = styled.div<PlayersOnFieldProps>`
@@ -195,24 +227,27 @@ export const PlayerOnField = styled.div<PlayersOnFieldProps>`
   }
 
   & > div {
-    display: none;
+    display: ${(props) => (props.showPlayersNames ? 'block' : 'none')};
     position: absolute;
     z-index: 110;
 
-    box-shadow:
+    /* box-shadow:
       rgba(18, 30, 39, 0.2) 5px 5px,
-      rgba(18, 30, 39, 0.2) 10px 10px;
+      rgba(18, 30, 39, 0.2) 10px 10px; */
+
+    text-shadow: 4px 4px 20px #000;
 
     left: 50%;
     top: 120%;
     transform: translateX(-50%);
 
-    background-color: ${(props) => props.theme.white};
+    /* background-color: ${(props) => props.theme.white}; */
     padding: 0.5rem 1rem;
     border-radius: 8px;
 
-    color: ${(props) => props.theme.black};
-    font-size: 0.875rem;
+    /* color: ${(props) => props.theme.white}; */
+    color: '#e2e2e2';
+    font-size: 1rem;
     font-family: 'Titillium Web', sans-serif;
     font-weight: 600;
   }
