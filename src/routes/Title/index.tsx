@@ -131,16 +131,16 @@ export default function Title() {
     let playersPositionOnField: string[][]
     const defaultFormation = [
       ['50%', '94%'],
-      ['15%', '70%'],
+      ['85%', '70%'],
       ['30%', '80%'],
       ['70%', '80%'],
-      ['85%', '70%'],
-      ['20%', '30%'],
-      ['40%', '50%'],
-      ['60%', '50%'],
-      ['80%', '30%'],
-      ['40%', '10%'],
-      ['60%', '10%'],
+      ['15%', '70%'],
+      ['50%', '60%'],
+      ['70%', '40%'],
+      ['30%', '40%'],
+      ['50%', '30%'],
+      ['40%', '15%'],
+      ['60%', '15%'],
     ]
 
     if (formation === '4-4-2') {
@@ -158,6 +158,20 @@ export default function Title() {
         ['75%', '20%'],
         ['25%', '20%'],
         ['50%', '10%'],
+      ]
+    } else if (formation === '4-2-3-1') {
+      playersPositionOnField = [
+        ['50%', '94%'],
+        ['85%', '70%'],
+        ['70%', '80%'],
+        ['30%', '80%'],
+        ['15%', '70%'],
+        ['50%', '65%'],
+        ['80%', '45%'],
+        ['30%', '50%'],
+        ['25%', '25%'],
+        ['50%', '35%'],
+        ['50%', '15%'],
       ]
     } else {
       playersPositionOnField = defaultFormation
@@ -229,27 +243,31 @@ export default function Title() {
               </h2>
               <SquadInformationContainer>
                 <table>
-                  <tr>
-                    <th>Nº</th>
-                    <th>País</th>
-                    <th>Nome</th>
-                  </tr>
-                  {[...Array.from({ length: 11 }, (_, i) => i + 1)].map(
-                    (player) => {
-                      const playerInfo =
-                        titleInformation.winningSquad.players[
-                          player.toString() as unknown as keyof WinningSquadPlayers
-                        ]
-                      return (
-                        <PlayerTableRow
-                          key={player}
-                          playerName={playerInfo.name}
-                          playerNationality={playerInfo.nationality}
-                          playerNumber={playerInfo.number}
-                        />
-                      )
-                    },
-                  )}
+                  <thead>
+                    <tr>
+                      <th>Nº</th>
+                      <th>País</th>
+                      <th>Nome</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[...Array.from({ length: 11 }, (_, i) => i + 1)].map(
+                      (player) => {
+                        const playerInfo =
+                          titleInformation.winningSquad.players[
+                            player.toString() as unknown as keyof WinningSquadPlayers
+                          ]
+                        return (
+                          <PlayerTableRow
+                            key={player}
+                            playerName={playerInfo.name}
+                            playerNationality={playerInfo.nationality}
+                            playerNumber={playerInfo.number}
+                          />
+                        )
+                      },
+                    )}
+                  </tbody>
                 </table>
 
                 <FootballFieldWrapper>
