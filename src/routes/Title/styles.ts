@@ -231,25 +231,18 @@ export const PlayerOnField = styled.div<PlayersOnFieldProps>`
     position: absolute;
     z-index: 110;
 
-    /* box-shadow:
-      rgba(18, 30, 39, 0.2) 5px 5px,
-      rgba(18, 30, 39, 0.2) 10px 10px; */
-
-    text-shadow: 4px 4px 20px #000;
-
     left: 50%;
-    top: 120%;
+    top: 125%;
     transform: translateX(-50%);
 
-    /* background-color: ${(props) => props.theme.white}; */
-    padding: 0.5rem 1rem;
+    background-color: ${(props) => props.theme.white};
+    padding: 0.1rem 0.3rem;
     border-radius: 8px;
 
-    /* color: ${(props) => props.theme.white}; */
-    color: '#e2e2e2';
-    font-size: 1rem;
+    color: ${(props) => props.theme.black};
+    font-size: 0.875rem;
     font-family: 'Titillium Web', sans-serif;
-    font-weight: 600;
+    font-weight: 400;
   }
 `
 

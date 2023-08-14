@@ -1,4 +1,4 @@
-import { UpperHeader } from './styles'
+import { FirstPhraseWrapper, SecondPhraseWrapper, UpperHeader } from './styles'
 import FlamengoLogo from '../../assets/flamengo.png'
 import { useEffect, useState } from 'react'
 import { useSpring, animated } from '@react-spring/web'
@@ -49,10 +49,10 @@ export default function Header() {
     ],
     [
       <Phrase key={4}>
-        vencer, vencer, <span>vencer</span>
+        Vencer, vencer, <span>vencer</span>,
       </Phrase>,
       <Phrase key={5}>
-        Uma vez <span>Flamengo</span>, Flamengo até morrer
+        uma vez <span>Flamengo</span>, Flamengo até morrer
       </Phrase>,
     ],
   ]
@@ -74,9 +74,11 @@ export default function Header() {
   return (
     <header>
       <UpperHeader>
-        {headerPhrases[phraseIndex][0]}
+        <FirstPhraseWrapper>{headerPhrases[phraseIndex][0]}</FirstPhraseWrapper>
         <img src={FlamengoLogo} alt="Flamengo Rowing Shield" />
-        {headerPhrases[phraseIndex][1]}
+        <SecondPhraseWrapper>
+          {headerPhrases[phraseIndex][1]}
+        </SecondPhraseWrapper>
       </UpperHeader>
       <div></div>
     </header>
