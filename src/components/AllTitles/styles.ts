@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
 export const AllTitlesContainer = styled.main`
-  margin-top: 10rem;
+  margin-top: 20rem;
 
   h1 {
     padding: 0 10rem;

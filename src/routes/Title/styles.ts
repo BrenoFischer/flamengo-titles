@@ -132,7 +132,6 @@ export const SquadContainer = styled(SectionLayout)`
     }
 
     td:first-child {
-      width: 40%;
       padding-left: 1.5rem;
     }
 
@@ -144,15 +143,72 @@ export const SquadContainer = styled(SectionLayout)`
 
 export const SquadInformationContainer = styled.div`
   display: flex;
-  /* justify-content: space-between; */
   gap: 20rem;
 `
 
 export const FootballFieldWrapper = styled.div`
-  /* max-height: 20rem; */
   position: relative;
+  max-height: 35rem;
 
   img {
     max-height: 35rem;
+  }
+`
+
+interface PlayersOnFieldProps {
+  left: string
+  top: string
+}
+
+export const PlayerOnField = styled.div<PlayersOnFieldProps>`
+  position: absolute;
+  left: ${(props) => props.left};
+  top: ${(props) => props.top};
+
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  border: 3px solid ${(props) => props.theme.red};
+  outline: 3px solid ${(props) => props.theme.black};
+
+  transform: translate(-50%, -50%);
+
+  background-color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.black};
+  font-size: 1.2rem;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 0 20px rgba(18, 30, 39, 0.4);
+
+  &:hover > div {
+    display: block;
+  }
+
+  & > div {
+    display: none;
+    position: absolute;
+    z-index: 110;
+
+    box-shadow:
+      rgba(18, 30, 39, 0.2) 5px 5px,
+      rgba(18, 30, 39, 0.2) 10px 10px;
+
+    left: 50%;
+    top: 120%;
+    transform: translateX(-50%);
+
+    background-color: ${(props) => props.theme.white};
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+
+    color: ${(props) => props.theme.black};
+    font-size: 0.875rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
   }
 `

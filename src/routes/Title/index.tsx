@@ -4,6 +4,7 @@ import { getTitleInformation } from '../../utils/firebase/firebase'
 import {
   FootballFieldWrapper,
   LastMatchContainer,
+  PlayerOnField,
   SquadContainer,
   SquadInformationContainer,
   TitleContainer,
@@ -12,18 +13,24 @@ import {
 import ReactCountryFlag from 'react-country-flag'
 import FootballField from '../../assets/football-field.png'
 
+interface PlayerType {
+  name: string
+  number: string
+  nationality: string
+}
+
 interface WinningSquadPlayers {
-  1: string
-  2: string
-  3: string
-  4: string
-  5: string
-  6: string
-  7: string
-  8: string
-  9: string
-  10: string
-  11: string
+  1: PlayerType
+  2: PlayerType
+  3: PlayerType
+  4: PlayerType
+  5: PlayerType
+  6: PlayerType
+  7: PlayerType
+  8: PlayerType
+  9: PlayerType
+  10: PlayerType
+  11: PlayerType
 }
 
 interface TitleInformation {
@@ -62,17 +69,17 @@ export default function Title() {
       formation: '',
       coach: '',
       players: {
-        1: '',
-        2: '',
-        3: '',
-        4: '',
-        5: '',
-        6: '',
-        7: '',
-        8: '',
-        9: '',
-        10: '',
-        11: '',
+        1: { name: '', nationality: '', number: '' },
+        2: { name: '', nationality: '', number: '' },
+        3: { name: '', nationality: '', number: '' },
+        4: { name: '', nationality: '', number: '' },
+        5: { name: '', nationality: '', number: '' },
+        6: { name: '', nationality: '', number: '' },
+        7: { name: '', nationality: '', number: '' },
+        8: { name: '', nationality: '', number: '' },
+        9: { name: '', nationality: '', number: '' },
+        10: { name: '', nationality: '', number: '' },
+        11: { name: '', nationality: '', number: '' },
       },
     },
   })
@@ -85,7 +92,6 @@ export default function Title() {
           category,
           year,
         )
-        console.log(fetchedTitleInformation)
         setTitleInformation(fetchedTitleInformation)
       }
     }
@@ -96,14 +102,87 @@ export default function Title() {
   interface PlayerTableRowProps {
     playerNumber: string
     playerName: string
+    playerNationality: string
   }
 
-  function PlayerTableRow({ playerNumber, playerName }: PlayerTableRowProps) {
+  function PlayerTableRow({
+    playerNumber,
+    playerName,
+    playerNationality,
+  }: PlayerTableRowProps) {
     return (
       <tr>
         <td>{playerNumber}</td>
+        <td>
+          <ReactCountryFlag
+            svg
+            countryCode={playerNationality}
+            style={{ width: '2rem' }}
+          />
+        </td>
         <td>{playerName}</td>
       </tr>
+    )
+  }
+
+  function WinningPlayers() {
+    const formation = titleInformation.winningSquad.formation
+
+    let playersPositionOnField: string[][]
+    const defaultFormation = [
+      ['50%', '94%'],
+      ['15%', '70%'],
+      ['30%', '80%'],
+      ['70%', '80%'],
+      ['85%', '70%'],
+      ['20%', '30%'],
+      ['40%', '50%'],
+      ['60%', '50%'],
+      ['80%', '30%'],
+      ['40%', '10%'],
+      ['60%', '10%'],
+    ]
+
+    if (formation === '4-4-2') {
+      playersPositionOnField = defaultFormation
+    } else if (formation === '4-3-3') {
+      playersPositionOnField = [
+        ['50%', '94%'],
+        ['85%', '70%'],
+        ['70%', '80%'],
+        ['30%', '80%'],
+        ['15%', '70%'],
+        ['33%', '55%'],
+        ['75%', '50%'],
+        ['50%', '38%'],
+        ['75%', '20%'],
+        ['25%', '20%'],
+        ['50%', '10%'],
+      ]
+    } else {
+      playersPositionOnField = defaultFormation
+    }
+
+    return (
+      <>
+        {[...Array.from({ length: 11 }, (_, i) => i + 1)].map((player) => {
+          const playerInfo =
+            titleInformation.winningSquad.players[
+              player.toString() as unknown as keyof WinningSquadPlayers
+            ]
+
+          return (
+            <PlayerOnField
+              key={player}
+              left={playersPositionOnField[player - 1][0]}
+              top={playersPositionOnField[player - 1][1]}
+            >
+              {playerInfo.number}
+              <div>{playerInfo.name}</div>
+            </PlayerOnField>
+          )
+        })}
+      </>
     )
   }
 
@@ -152,20 +231,24 @@ export default function Title() {
                 <table>
                   <tr>
                     <th>Nº</th>
+                    <th>País</th>
                     <th>Nome</th>
                   </tr>
                   {[...Array.from({ length: 11 }, (_, i) => i + 1)].map(
-                    (player) => (
-                      <PlayerTableRow
-                        key={player}
-                        playerName={
-                          titleInformation.winningSquad.players[
-                            player.toString() as unknown as keyof WinningSquadPlayers
-                          ]
-                        }
-                        playerNumber={player.toString()}
-                      />
-                    ),
+                    (player) => {
+                      const playerInfo =
+                        titleInformation.winningSquad.players[
+                          player.toString() as unknown as keyof WinningSquadPlayers
+                        ]
+                      return (
+                        <PlayerTableRow
+                          key={player}
+                          playerName={playerInfo.name}
+                          playerNationality={playerInfo.nationality}
+                          playerNumber={playerInfo.number}
+                        />
+                      )
+                    },
                   )}
                 </table>
 
@@ -174,6 +257,7 @@ export default function Title() {
                     src={FootballField}
                     alt="Football Field with winning squad"
                   />
+                  <WinningPlayers />
                 </FootballFieldWrapper>
               </SquadInformationContainer>
             </SquadContainer>
