@@ -86,6 +86,30 @@ export const LastMatchContainer = styled(SectionLayout)`
   }
 `
 
+export const WinningSquadPhotoContainer = styled.div`
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    span {
+      color: ${(props) => props.theme.red};
+      font-size: 2rem;
+      font-weight: 600;
+    }
+    color: ${(props) => props.theme.red};
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 900;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+  }
+
+  img {
+    max-width: 60rem;
+  }
+`
+
 export const SquadContainer = styled(SectionLayout)`
   table {
     border-collapse: collapse;

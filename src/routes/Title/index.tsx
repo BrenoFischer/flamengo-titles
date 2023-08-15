@@ -14,6 +14,7 @@ import {
   SquadInformationContainer,
   TitleContainer,
   TopScorerContainer,
+  WinningSquadPhotoContainer,
 } from './styles'
 import ReactCountryFlag from 'react-country-flag'
 import FootballField from '../../assets/football-field.png'
@@ -53,6 +54,7 @@ interface TitleInformation {
   }
   winningSquad: {
     formation: string
+    photo: string
     coach: { name: string; country: string }
     players: WinningSquadPlayers
   }
@@ -75,6 +77,7 @@ export default function Title() {
     },
     winningSquad: {
       formation: '',
+      photo: '',
       coach: { name: '', country: '' },
       players: {
         1: { name: '', nationality: '', number: '' },
@@ -246,6 +249,16 @@ export default function Title() {
                 />
               </div>
             </LastMatchContainer>
+
+            <WinningSquadPhotoContainer>
+              <h2>
+                <span>|</span>{' '}
+                {activeLanguage === 'PT'
+                  ? 'Foto dos Campeões'
+                  : 'Champions Photo'}
+              </h2>
+              <img src={titleInformation.winningSquad.photo} alt="" />
+            </WinningSquadPhotoContainer>
 
             <SquadContainer>
               <h2>
