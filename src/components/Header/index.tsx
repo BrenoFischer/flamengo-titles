@@ -1,7 +1,14 @@
-import { FirstPhraseWrapper, SecondPhraseWrapper, UpperHeader } from './styles'
+import {
+  FirstPhraseWrapper,
+  LowerHeader,
+  SecondPhraseWrapper,
+  UpperHeader,
+} from './styles'
 import FlamengoLogo from '../../assets/flamengo.png'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { useSpring, animated } from '@react-spring/web'
+import { LanguageContext } from '../../contexts/LanguageContext'
+import ReactCountryFlag from 'react-country-flag'
 
 interface PhraseProps {
   children: React.ReactNode
@@ -29,6 +36,7 @@ function Phrase({ children }: PhraseProps) {
 
 export default function Header() {
   const [phraseIndex, setPhraseIndex] = useState(0)
+  const { activeLanguage, changeActiveLanguage } = useContext(LanguageContext)
 
   const headerPhrases = [
     [
@@ -52,7 +60,7 @@ export default function Header() {
         Vencer, vencer, <span>vencer</span>,
       </Phrase>,
       <Phrase key={5}>
-        uma vez <span>Flamengo</span>, Flamengo até morrer
+        uma vez <span>Flamengo</span>, Flamengo até morrer.
       </Phrase>,
     ],
   ]
@@ -80,7 +88,38 @@ export default function Header() {
           {headerPhrases[phraseIndex][1]}
         </SecondPhraseWrapper>
       </UpperHeader>
-      <div></div>
+      <LowerHeader>
+        <>
+          <ReactCountryFlag
+            onClick={() => changeActiveLanguage('PT')}
+            svg
+            countryCode={'BR'}
+            style={{
+              fontSize: '2.2rem',
+              cursor: 'pointer',
+              borderBottom:
+                activeLanguage === 'PT'
+                  ? '3px solid black'
+                  : '3px solid transparent',
+              padding: '0 0.1rem',
+            }}
+          />
+          <ReactCountryFlag
+            onClick={() => changeActiveLanguage('EN')}
+            svg
+            countryCode={'US'}
+            style={{
+              fontSize: '2.2rem',
+              cursor: 'pointer',
+              borderBottom:
+                activeLanguage === 'EN'
+                  ? '3px solid black'
+                  : '3px solid transparent',
+              padding: '0 0.1rem',
+            }}
+          />
+        </>
+      </LowerHeader>
     </header>
   )
 }

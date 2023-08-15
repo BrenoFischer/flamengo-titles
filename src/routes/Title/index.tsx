@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { getTitleInformation } from '../../utils/firebase/firebase'
@@ -17,6 +17,7 @@ import {
 } from './styles'
 import ReactCountryFlag from 'react-country-flag'
 import FootballField from '../../assets/football-field.png'
+import { LanguageContext } from '../../contexts/LanguageContext'
 
 interface PlayerType {
   name: string
@@ -58,6 +59,7 @@ interface TitleInformation {
 }
 
 export default function Title() {
+  const { activeLanguage } = useContext(LanguageContext)
   const [showPlayers, setShowPlayers] = useState(false)
   const [titleInformation, setTitleInformation] = useState<TitleInformation>({
     coverImg: '',
@@ -136,48 +138,48 @@ export default function Title() {
 
     let playersPositionOnField: string[][]
     const defaultFormation = [
-      ['50%', '94%'],
-      ['85%', '70%'],
-      ['30%', '80%'],
-      ['70%', '80%'],
-      ['15%', '70%'],
-      ['50%', '60%'],
-      ['70%', '40%'],
-      ['30%', '40%'],
-      ['50%', '30%'],
-      ['40%', '15%'],
-      ['60%', '15%'],
+      ['50%', '98%'],
+      ['85%', '75%'],
+      ['30%', '85%'],
+      ['70%', '85%'],
+      ['15%', '75%'],
+      ['50%', '65%'],
+      ['70%', '45%'],
+      ['30%', '45%'],
+      ['50%', '35%'],
+      ['40%', '20%'],
+      ['60%', '20%'],
     ]
 
     if (formation === '4-4-2') {
       playersPositionOnField = defaultFormation
     } else if (formation === '4-3-3') {
       playersPositionOnField = [
-        ['50%', '94%'],
-        ['85%', '70%'],
-        ['70%', '80%'],
-        ['30%', '80%'],
-        ['15%', '70%'],
-        ['33%', '55%'],
-        ['75%', '50%'],
-        ['50%', '38%'],
-        ['75%', '20%'],
-        ['25%', '20%'],
-        ['50%', '10%'],
+        ['50%', '98%'],
+        ['85%', '75%'],
+        ['70%', '85%'],
+        ['30%', '85%'],
+        ['15%', '75%'],
+        ['33%', '60%'],
+        ['75%', '55%'],
+        ['50%', '43%'],
+        ['75%', '25%'],
+        ['25%', '25%'],
+        ['50%', '15%'],
       ]
     } else if (formation === '4-2-3-1') {
       playersPositionOnField = [
-        ['50%', '94%'],
-        ['85%', '70%'],
-        ['70%', '80%'],
-        ['30%', '80%'],
-        ['15%', '70%'],
-        ['50%', '65%'],
-        ['80%', '45%'],
-        ['30%', '50%'],
-        ['25%', '25%'],
-        ['50%', '35%'],
-        ['50%', '15%'],
+        ['50%', '98%'],
+        ['85%', '75%'],
+        ['70%', '85%'],
+        ['30%', '85%'],
+        ['15%', '75%'],
+        ['50%', '70%'],
+        ['80%', '50%'],
+        ['30%', '55%'],
+        ['25%', '30%'],
+        ['50%', '40%'],
+        ['50%', '20%'],
       ]
     } else {
       playersPositionOnField = defaultFormation
@@ -223,7 +225,8 @@ export default function Title() {
           <main>
             <LastMatchContainer>
               <h2>
-                <span>|</span> Final
+                <span>|</span>{' '}
+                {activeLanguage === 'PT' ? 'Final' : 'Final Match'}
               </h2>
               <div>
                 <ReactCountryFlag
@@ -246,15 +249,16 @@ export default function Title() {
 
             <SquadContainer>
               <h2>
-                <span>|</span> Elenco Campeão
+                <span>|</span>{' '}
+                {activeLanguage === 'PT' ? 'Elenco Campeão' : 'Champion Squad'}
               </h2>
               <SquadInformationContainer>
                 <table>
                   <thead>
                     <tr>
                       <th>Nº</th>
-                      <th>País</th>
-                      <th>Nome</th>
+                      <th>{activeLanguage === 'PT' ? 'País' : 'Country'}</th>
+                      <th>{activeLanguage === 'PT' ? 'Nome' : 'Name'}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -275,7 +279,7 @@ export default function Title() {
                       },
                     )}
                     <tr>
-                      <td>Técnico</td>
+                      <td>{activeLanguage === 'PT' ? 'Técnico' : 'Coach'}</td>
                       <td>
                         <ReactCountryFlag
                           svg
@@ -302,7 +306,9 @@ export default function Title() {
                       </Checkbox.Indicator>
                     </CheckboxComponent>
                     <label htmlFor="show-players">
-                      Mostrar nome dos jogadores
+                      {activeLanguage === 'PT'
+                        ? 'Mostrar nome dos jogadores'
+                        : 'Display players name'}
                     </label>
                   </CheckboxWrapper>
                   <img
@@ -311,7 +317,12 @@ export default function Title() {
                   />
                   <WinningPlayers />
                   <FormationWrapper>
-                    <span>Formação principal:</span>
+                    <span>
+                      {activeLanguage === 'PT'
+                        ? 'Formação Principal'
+                        : 'Main Starting Line-up'}
+                      :
+                    </span>
                     {titleInformation.winningSquad.formation}
                   </FormationWrapper>
                 </FootballFieldWrapper>
@@ -320,7 +331,8 @@ export default function Title() {
 
             <TopScorerContainer>
               <h2>
-                <span>|</span> Artilheiro
+                <span>|</span>{' '}
+                {activeLanguage === 'PT' ? 'Artilheiro' : 'Top Scorer'}
               </h2>
               <h3>
                 {titleInformation.topScorer.player} -{' '}

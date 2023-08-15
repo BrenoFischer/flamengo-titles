@@ -47,3 +47,15 @@ export const SecondPhraseWrapper = styled.div`
   justify-content: flex-start;
   margin-left: 5rem;
 `
+
+export const LowerHeader = styled.div`
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+
+  svg: {
+    cursor: pointer;
+    border: 1px solid black;
+  }
+`
