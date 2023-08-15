@@ -4,7 +4,7 @@ import { saveNewChampionship } from '../../utils/firebase/firebase'
 
 export default function Home() {
   async function handleAddNewSquad() {
-    await saveNewChampionship('libertadores')
+    await saveNewChampionship('brasileiro')
   }
 
   return (

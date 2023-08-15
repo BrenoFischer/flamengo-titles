@@ -23,76 +23,162 @@ export const getTitleInformation = async (category: string, year: string) => {
 
 export const saveNewChampionship = async (category: string) => {
   const docData = {
-    2019: {
+    2009: {
       coverImg:
         'https://firebasestorage.googleapis.com/v0/b/flamengo-26a20.appspot.com/o/torcida-flamengo4.webp?alt=media&token=dc3f1a25-eaef-4a8f-94d7-51de052f0c8a',
+      roundRobin: true,
+      numberOfTeams: 20,
+      finalRanking: {
+        1: {
+          name: 'Flamengo',
+          points: '67',
+        },
+        2: {
+          name: 'Internacional',
+          points: '65',
+        },
+        3: {
+          name: 'São Paulo',
+          points: '65',
+        },
+        4: {
+          name: 'Cruzeiro',
+          points: '62',
+        },
+        5: {
+          name: 'Palmeiras',
+          points: '62',
+        },
+        6: {
+          name: 'Avaí',
+          points: '57',
+        },
+        7: {
+          name: 'Atlético-MG',
+          points: '56',
+        },
+        8: {
+          name: 'Grêmio',
+          points: '55',
+        },
+        9: {
+          name: 'Goiás',
+          points: '55',
+        },
+        10: {
+          name: 'Corinthians',
+          points: '52',
+        },
+        11: {
+          name: 'Grêmio Barueri',
+          points: '49',
+        },
+        12: {
+          name: 'Santos',
+          points: '49',
+        },
+        13: {
+          name: 'Vitória',
+          points: '48',
+        },
+        14: {
+          name: 'Atlético-PR',
+          points: '48',
+        },
+        15: {
+          name: 'Botafogo',
+          points: '47',
+        },
+        16: {
+          name: 'Fluminense',
+          points: '47',
+        },
+        17: {
+          name: 'Coritiba',
+          points: '45',
+        },
+        18: {
+          name: 'Santo André',
+          points: '41',
+        },
+        19: {
+          name: 'Náutico',
+          points: '38',
+        },
+        20: {
+          name: 'Sport',
+          points: '31',
+        },
+      },
       finalMatch: {
-        countryCode: 'AR',
+        countryCode: 'BR',
         score: '2x1',
-        team: 'River Plate',
+        team: 'Grêmio',
       },
       topScorer: {
-        goals: '9',
-        player: 'Gabi',
+        goals: '19',
+        player: 'Adriano',
         team: 'Flamengo',
       },
       winningSquad: {
-        coach: 'Jorge Jesus',
+        coach: { name: 'Andrade', country: 'BR' },
+        photo:
+          'https://firebasestorage.googleapis.com/v0/b/flamengo-26a20.appspot.com/o/winning-squad-brasileiro-2009.webp?alt=media&token=c571ce35-0be9-43c3-8bf9-1b206990ba0f',
         formation: '4-3-3',
         players: {
           1: {
-            name: 'Diego Alves',
+            name: 'Bruno',
             number: '1',
             nationality: 'BR',
           },
           2: {
-            name: 'Rafinha',
-            number: '18',
+            name: 'Léo Moura',
+            number: '2',
             nationality: 'BR',
           },
           3: {
-            name: 'Rodrigo Caio',
-            number: '3',
+            name: 'Álvaro',
+            number: '14',
             nationality: 'BR',
           },
           4: {
-            name: 'Pablo Marí',
-            number: '24',
-            nationality: 'ES',
+            name: 'Ronaldo Angelim',
+            number: '4',
+            nationality: 'BR',
           },
           5: {
-            name: 'Filipe Luís',
-            number: '21',
-            nationality: 'BR',
-          },
-          6: {
-            name: 'Gerson',
-            number: '15',
-            nationality: 'BR',
-          },
-          7: {
-            name: 'William Arão',
+            name: 'Juan',
             number: '5',
             nationality: 'BR',
           },
-          8: {
-            name: 'Arrascaeta',
-            number: '14',
-            nationality: 'UY',
-          },
-          9: {
-            name: 'Everton Ribeiro',
-            number: '7',
+          6: {
+            name: 'Airton',
+            number: '6',
             nationality: 'BR',
           },
+          7: {
+            name: 'Willians',
+            number: '8',
+            nationality: 'BR',
+          },
+          8: {
+            name: 'Maldonado',
+            number: '13',
+            nationality: 'CL',
+          },
+          9: {
+            name: 'Petkovic',
+            number: '43',
+            nationality: 'RS',
+          },
           10: {
-            name: 'Bruno Henrique',
-            number: '27',
+            name: 'Adriano',
+            number: '10',
             nationality: 'BR',
           },
           11: {
-            name: 'Gabi',
-            number: '9',
+            name: 'Zé Roberto',
+            number: '26',
             nationality: 'BR',
           },
         },

@@ -6,6 +6,7 @@ import {
   CheckboxComponent,
   CheckboxIcon,
   CheckboxWrapper,
+  FinalRankingContainer,
   FootballFieldWrapper,
   FormationWrapper,
   LastMatchContainer,
@@ -13,6 +14,7 @@ import {
   SquadContainer,
   SquadInformationContainer,
   TitleContainer,
+  TitleSectionH2,
   TopScorerContainer,
   WinningSquadPhotoContainer,
 } from './styles'
@@ -40,13 +42,43 @@ interface WinningSquadPlayers {
   11: PlayerType
 }
 
+interface TeamFromFinalRanking {
+  name: string
+  points: string
+}
+
+interface FinalRanking {
+  1: TeamFromFinalRanking
+  2: TeamFromFinalRanking
+  3: TeamFromFinalRanking
+  4: TeamFromFinalRanking
+  5: TeamFromFinalRanking
+  6: TeamFromFinalRanking
+  7: TeamFromFinalRanking
+  8: TeamFromFinalRanking
+  9: TeamFromFinalRanking
+  10: TeamFromFinalRanking
+  11: TeamFromFinalRanking
+  12: TeamFromFinalRanking
+  13: TeamFromFinalRanking
+  14: TeamFromFinalRanking
+  15: TeamFromFinalRanking
+  16: TeamFromFinalRanking
+  17: TeamFromFinalRanking
+  18: TeamFromFinalRanking
+  19: TeamFromFinalRanking
+  20: TeamFromFinalRanking
+}
+
 interface TitleInformation {
   coverImg: string
+  roundRobin: boolean
   finalMatch: {
     score: string
     team: string
     countryCode: string
   }
+  finalRanking: FinalRanking
   topScorer: {
     player: string
     team: string
@@ -70,6 +102,29 @@ export default function Title() {
       team: '',
       countryCode: '',
     },
+    finalRanking: {
+      1: { name: '', points: '' },
+      2: { name: '', points: '' },
+      3: { name: '', points: '' },
+      4: { name: '', points: '' },
+      5: { name: '', points: '' },
+      6: { name: '', points: '' },
+      7: { name: '', points: '' },
+      8: { name: '', points: '' },
+      9: { name: '', points: '' },
+      10: { name: '', points: '' },
+      11: { name: '', points: '' },
+      12: { name: '', points: '' },
+      13: { name: '', points: '' },
+      14: { name: '', points: '' },
+      15: { name: '', points: '' },
+      16: { name: '', points: '' },
+      17: { name: '', points: '' },
+      18: { name: '', points: '' },
+      19: { name: '', points: '' },
+      20: { name: '', points: '' },
+    },
+    roundRobin: false,
     topScorer: {
       player: '',
       team: '',
@@ -109,6 +164,19 @@ export default function Title() {
 
     fetchTitleInformation()
   }, [category, year])
+
+  interface TitleSectionHeaderProps {
+    ptText: string
+    enText: string
+  }
+
+  function TitleSectionHeader({ ptText, enText }: TitleSectionHeaderProps) {
+    return (
+      <TitleSectionH2>
+        <span>|</span> {activeLanguage === 'PT' ? ptText : enText}
+      </TitleSectionH2>
+    )
+  }
 
   interface PlayerTableRowProps {
     playerNumber: string
@@ -212,6 +280,27 @@ export default function Title() {
     )
   }
 
+  function FinalRankingTable() {
+    return (
+      <>
+        {[...Array.from({ length: 20 }, (_, i) => i + 1)].map((team) => {
+          const teamInfo =
+            titleInformation.finalRanking[
+              team.toString() as unknown as keyof FinalRanking
+            ]
+
+          return (
+            <tr key={teamInfo.name}>
+              <td>{team}</td>
+              <td>{teamInfo.name}</td>
+              <td>{teamInfo.points}</td>
+            </tr>
+          )
+        })}
+      </>
+    )
+  }
+
   return (
     <>
       {titleInformation.coverImg === '' ? (
@@ -227,10 +316,7 @@ export default function Title() {
 
           <main>
             <LastMatchContainer>
-              <h2>
-                <span>|</span>{' '}
-                {activeLanguage === 'PT' ? 'Final' : 'Final Match'}
-              </h2>
+              <TitleSectionHeader ptText="Final" enText="Last Match" />
               <div>
                 <ReactCountryFlag
                   svg
@@ -251,20 +337,18 @@ export default function Title() {
             </LastMatchContainer>
 
             <WinningSquadPhotoContainer>
-              <h2>
-                <span>|</span>{' '}
-                {activeLanguage === 'PT'
-                  ? 'Foto dos Campeões'
-                  : 'Champions Photo'}
-              </h2>
+              <TitleSectionHeader
+                ptText="Foto dos Campeões"
+                enText="Champions Photo"
+              />
               <img src={titleInformation.winningSquad.photo} alt="" />
             </WinningSquadPhotoContainer>
 
             <SquadContainer>
-              <h2>
-                <span>|</span>{' '}
-                {activeLanguage === 'PT' ? 'Elenco Campeão' : 'Champion Squad'}
-              </h2>
+              <TitleSectionHeader
+                ptText="Elenco Campeão"
+                enText="Champion Squad"
+              />
               <SquadInformationContainer>
                 <table>
                   <thead>
@@ -342,11 +426,31 @@ export default function Title() {
               </SquadInformationContainer>
             </SquadContainer>
 
+            {titleInformation.roundRobin && (
+              <>
+                <TitleSectionHeader
+                  ptText="Tabela Final"
+                  enText="Final Ranking"
+                />
+                <FinalRankingContainer>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Pos</th>
+                        <th>{activeLanguage === 'PT' ? 'Time' : 'Team'}</th>
+                        <th>{activeLanguage === 'PT' ? 'Pontos' : 'Points'}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <FinalRankingTable />
+                    </tbody>
+                  </table>
+                </FinalRankingContainer>
+              </>
+            )}
+
             <TopScorerContainer>
-              <h2>
-                <span>|</span>{' '}
-                {activeLanguage === 'PT' ? 'Artilheiro' : 'Top Scorer'}
-              </h2>
+              <TitleSectionHeader ptText="Artilheiro" enText="Top Scorer" />
               <h3>
                 {titleInformation.topScorer.player} -{' '}
                 {titleInformation.topScorer.team}:{' '}
