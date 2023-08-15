@@ -338,6 +338,7 @@ export default function Title() {
                 {titleInformation.topScorer.player} -{' '}
                 {titleInformation.topScorer.team}:{' '}
                 <span>{titleInformation.topScorer.goals}</span>
+                {activeLanguage === 'PT' ? 'gols' : 'goals'}
               </h3>
             </TopScorerContainer>
           </main>

@@ -86,16 +86,6 @@ export const LastMatchContainer = styled(SectionLayout)`
   }
 `
 
-export const TopScorerContainer = styled(SectionLayout)`
-  h3 {
-    span {
-      font-size: 2.5rem;
-      margin: 0 1rem;
-      color: ${(props) => props.theme.red};
-    }
-  }
-`
-
 export const SquadContainer = styled(SectionLayout)`
   table {
     border-collapse: collapse;
@@ -260,5 +250,15 @@ export const FormationWrapper = styled.div`
     color: ${(props) => props.theme.red};
     font-size: 1.4rem;
     font-weight: 400;
+  }
+`
+
+export const TopScorerContainer = styled(SectionLayout)`
+  h3 {
+    span {
+      font-size: 2.5rem;
+      margin: 0 0.4rem 0 1rem;
+      color: ${(props) => props.theme.red};
+    }
   }
 `
