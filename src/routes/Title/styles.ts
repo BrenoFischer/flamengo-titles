@@ -86,6 +86,33 @@ export const LastMatchContainer = styled(SectionLayout)`
   }
 `
 
+export const StadiumContainer = styled.div`
+  margin-top: 5rem;
+  display: flex;
+
+  align-items: center;
+  color: ${(props) => props.theme.black};
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+
+  svg {
+    margin-right: 1rem;
+    color: ${(props) => props.theme.black};
+    font-size: 2.5rem;
+  }
+
+  img {
+    transform: translateY(0);
+  }
+
+  span {
+    color: ${(props) => props.theme.red};
+    font-weight: 900;
+    font-size: 2rem;
+  }
+`
+
 export const WinningSquadPhotoContainer = styled.div`
   img {
     max-width: 60rem;
@@ -304,6 +331,10 @@ export const FinalRankingContainer = styled.div`
 
     tr:nth-child(odd) {
       background-color: #e5e5e5;
+    }
+
+    tr:hover {
+      background-color: #a8a4a4;
     }
 
     td:first-child {

@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import * as Checkbox from '@radix-ui/react-checkbox'
+import { MdOutlineStadium } from 'react-icons/md'
 import { getTitleInformation } from '../../utils/firebase/firebase'
 import {
   CheckboxComponent,
@@ -13,6 +14,7 @@ import {
   PlayerOnField,
   SquadContainer,
   SquadInformationContainer,
+  StadiumContainer,
   TitleContainer,
   TitleSectionH2,
   TopScorerContainer,
@@ -45,6 +47,8 @@ interface WinningSquadPlayers {
 interface TeamFromFinalRanking {
   name: string
   points: string
+  gc: number
+  gm: number
 }
 
 interface FinalRanking {
@@ -70,6 +74,13 @@ interface FinalRanking {
   20: TeamFromFinalRanking
 }
 
+interface Stadium {
+  name: string
+  country: string
+  location: string
+  spectators: string
+}
+
 interface TitleInformation {
   coverImg: string
   roundRobin: boolean
@@ -77,6 +88,7 @@ interface TitleInformation {
     score: string
     team: string
     countryCode: string
+    stadium: Stadium
   }
   finalRanking: FinalRanking
   topScorer: {
@@ -101,28 +113,29 @@ export default function Title() {
       score: '',
       team: '',
       countryCode: '',
+      stadium: { name: '', country: '', location: '', spectators: '' },
     },
     finalRanking: {
-      1: { name: '', points: '' },
-      2: { name: '', points: '' },
-      3: { name: '', points: '' },
-      4: { name: '', points: '' },
-      5: { name: '', points: '' },
-      6: { name: '', points: '' },
-      7: { name: '', points: '' },
-      8: { name: '', points: '' },
-      9: { name: '', points: '' },
-      10: { name: '', points: '' },
-      11: { name: '', points: '' },
-      12: { name: '', points: '' },
-      13: { name: '', points: '' },
-      14: { name: '', points: '' },
-      15: { name: '', points: '' },
-      16: { name: '', points: '' },
-      17: { name: '', points: '' },
-      18: { name: '', points: '' },
-      19: { name: '', points: '' },
-      20: { name: '', points: '' },
+      1: { name: '', points: '', gc: 0, gm: 0 },
+      2: { name: '', points: '', gc: 0, gm: 0 },
+      3: { name: '', points: '', gc: 0, gm: 0 },
+      4: { name: '', points: '', gc: 0, gm: 0 },
+      5: { name: '', points: '', gc: 0, gm: 0 },
+      6: { name: '', points: '', gc: 0, gm: 0 },
+      7: { name: '', points: '', gc: 0, gm: 0 },
+      8: { name: '', points: '', gc: 0, gm: 0 },
+      9: { name: '', points: '', gc: 0, gm: 0 },
+      10: { name: '', points: '', gc: 0, gm: 0 },
+      11: { name: '', points: '', gc: 0, gm: 0 },
+      12: { name: '', points: '', gc: 0, gm: 0 },
+      13: { name: '', points: '', gc: 0, gm: 0 },
+      14: { name: '', points: '', gc: 0, gm: 0 },
+      15: { name: '', points: '', gc: 0, gm: 0 },
+      16: { name: '', points: '', gc: 0, gm: 0 },
+      17: { name: '', points: '', gc: 0, gm: 0 },
+      18: { name: '', points: '', gc: 0, gm: 0 },
+      19: { name: '', points: '', gc: 0, gm: 0 },
+      20: { name: '', points: '', gc: 0, gm: 0 },
     },
     roundRobin: false,
     topScorer: {
@@ -289,11 +302,15 @@ export default function Title() {
               team.toString() as unknown as keyof FinalRanking
             ]
 
+          const sg = teamInfo.gm - teamInfo.gc
           return (
             <tr key={teamInfo.name}>
               <td>{team}</td>
               <td>{teamInfo.name}</td>
               <td>{teamInfo.points}</td>
+              <td>{teamInfo.gm.toString()}</td>
+              <td>{teamInfo.gc.toString()}</td>
+              <td>{sg.toString()}</td>
             </tr>
           )
         })}
@@ -334,6 +351,20 @@ export default function Title() {
                   style={{ width: '2rem' }}
                 />
               </div>
+              <StadiumContainer>
+                {<MdOutlineStadium />}
+                <span>
+                  {titleInformation.finalMatch.stadium.spectators}
+                </span>{' '}
+                {activeLanguage === 'PT' ? 'Espectadores' : 'Spectators'} -{' '}
+                <span>{titleInformation.finalMatch.stadium.name}</span> -{' '}
+                {titleInformation.finalMatch.stadium.location}
+                <ReactCountryFlag
+                  svg
+                  countryCode={titleInformation.finalMatch.stadium.country}
+                  style={{ width: '1.5rem' }}
+                />
+              </StadiumContainer>
             </LastMatchContainer>
 
             <WinningSquadPhotoContainer>
@@ -439,6 +470,9 @@ export default function Title() {
                         <th>Pos</th>
                         <th>{activeLanguage === 'PT' ? 'Time' : 'Team'}</th>
                         <th>{activeLanguage === 'PT' ? 'Pontos' : 'Points'}</th>
+                        <th>{activeLanguage === 'PT' ? 'GP' : 'Goals'}</th>
+                        <th>{activeLanguage === 'PT' ? 'GC' : 'GC'}</th>
+                        <th>{activeLanguage === 'PT' ? 'SG' : 'GD'}</th>
                       </tr>
                     </thead>
                     <tbody>
