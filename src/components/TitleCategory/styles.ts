@@ -35,19 +35,28 @@ export const TitleCategoryContainer = styled.li`
 
   p {
     padding: 1rem 2rem;
-    border: 2px solid ${(props) => props.theme.black};
-    cursor: pointer;
 
     font-family: 'Titillium Web', sans-serif;
     font-weight: 600;
     font-size: 1.2rem;
-
-    transition: all 0.1s ease-out;
-
-    &:hover {
-      background-color: ${(props) => props.theme.red};
-      color: ${(props) => props.theme.white};
-      border: 2px solid ${(props) => props.theme.red};
-    }
   }
+`
+
+export const EnabledLink = styled.p`
+  border: 2px solid ${(props) => props.theme.black};
+  cursor: pointer;
+
+  transition: all 0.1s ease-out;
+
+  &:hover {
+    background-color: ${(props) => props.theme.red};
+    color: ${(props) => props.theme.white};
+    border: 2px solid ${(props) => props.theme.red};
+  }
+`
+
+export const DisabledLink = styled.p`
+  border: 2px solid ${(props) => props.theme.darkGray};
+  color: ${(props) => props.theme.darkGray};
+  cursor: not-allowed;
 `

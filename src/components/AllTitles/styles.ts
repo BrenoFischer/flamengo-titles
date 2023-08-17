@@ -14,7 +14,7 @@ export const AllTitlesContainer = styled.main`
   }
 
   ul {
-    background-color: #f5f5f5;
+    background-color: ${(props) => props.theme.gray};
     padding: 4rem 10rem;
   }
 `
