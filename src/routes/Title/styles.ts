@@ -1,6 +1,7 @@
 import { styled } from 'styled-components'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { CheckIcon } from '@radix-ui/react-icons'
+import { devices } from '../../styles/mixins'
 
 export const TitleContainer = styled.div`
   header {
@@ -15,11 +16,14 @@ export const TitleContainer = styled.div`
       top: 50%;
       transform: translate(-50%, -50%);
       color: ${(props) => props.theme.white};
-      font-family: 'Titillium Web', sans-serif;
       font-weight: 900;
       font-size: 5rem;
       letter-spacing: 2px;
       text-shadow: 4px 4px 20px #000;
+
+      @media ${devices.phone} {
+        font-size: 4.5rem;
+      }
     }
 
     > img {
@@ -31,6 +35,10 @@ export const TitleContainer = styled.div`
 
   main {
     padding: 0 10rem 10rem;
+
+    @media ${devices.phone} {
+      padding: 0 2rem 2rem;
+    }
   }
 `
 
@@ -63,7 +71,6 @@ export const TitleSectionH2 = styled.h2`
     font-weight: 600;
   }
   color: ${(props) => props.theme.red};
-  font-family: 'Titillium Web', sans-serif;
   font-weight: 900;
   font-size: 3rem;
   letter-spacing: 2px;
@@ -77,7 +84,6 @@ const SectionLayout = styled.section`
     display: flex;
     align-items: center;
     color: ${(props) => props.theme.black};
-    font-family: 'Titillium Web', sans-serif;
     font-weight: 600;
     font-size: 2rem;
     letter-spacing: 1px;
@@ -89,6 +95,10 @@ export const LastMatchContainer = styled(SectionLayout)`
     display: flex;
     align-items: center;
     gap: 0.5rem;
+
+    @media ${devices.phone} {
+      justify-content: center;
+    }
   }
 
   h3 {
@@ -113,8 +123,11 @@ export const StadiumContainer = styled.div`
   display: flex;
   align-items: center;
 
+  @media ${devices.phone} {
+    flex-direction: column;
+  }
+
   color: ${(props) => props.theme.black};
-  font-family: 'Titillium Web', sans-serif;
   font-weight: 600;
   font-size: 1.5rem;
 
@@ -141,7 +154,6 @@ export const DateContainer = styled.div`
   margin-left: 1px;
 
   color: ${(props) => props.theme.black};
-  font-family: 'Titillium Web', sans-serif;
   font-weight: 600;
   font-size: 1.8rem;
 
@@ -165,13 +177,16 @@ export const TopScorerContainer = styled(SectionLayout)`
 export const WinningSquadPhotoContainer = styled.div`
   img {
     max-width: 60rem;
+
+    @media ${devices.phone} {
+      max-width: 33rem;
+    }
   }
 `
 
 export const SquadContainer = styled(SectionLayout)`
   table {
     border-collapse: collapse;
-    min-width: 300px;
     box-shadow:
       rgba(18, 30, 39, 0.2) 5px 5px,
       rgba(18, 30, 39, 0.2) 10px 10px;
@@ -181,7 +196,6 @@ export const SquadContainer = styled(SectionLayout)`
       padding: 0.5rem;
       text-align: left;
       color: ${(props) => props.theme.white};
-      font-family: 'Titillium Web', sans-serif;
       font-weight: 600;
       font-size: 1.3rem;
     }
@@ -200,7 +214,6 @@ export const SquadContainer = styled(SectionLayout)`
       border-top: 3px solid ${(props) => props.theme.black};
       padding: 0.5rem;
       font-size: 1rem;
-      font-family: 'Titillium Web', sans-serif;
       font-weight: 400;
       line-height: 1.6;
     }
@@ -223,6 +236,11 @@ export const SquadContainer = styled(SectionLayout)`
 export const SquadInformationContainer = styled.div`
   display: flex;
   gap: 20rem;
+
+  @media ${devices.phone} {
+    flex-direction: column;
+    gap: 5rem;
+  }
 `
 
 export const CheckboxWrapper = styled.div`
@@ -234,7 +252,6 @@ export const CheckboxWrapper = styled.div`
   label {
     color: ${(props) => props.theme.black};
     font-size: 1rem;
-    font-family: 'Titillium Web', sans-serif;
     font-weight: 600;
   }
 `
@@ -260,6 +277,10 @@ export const FootballFieldWrapper = styled.div`
 
   img {
     max-height: 35rem;
+
+    @media ${devices.phone} {
+      min-width: 100%;
+    }
   }
 `
 
@@ -285,7 +306,6 @@ export const PlayerOnField = styled.div<PlayersOnFieldProps>`
   background-color: ${(props) => props.theme.white};
   color: ${(props) => props.theme.black};
   font-size: 1.2rem;
-  font-family: 'Titillium Web', sans-serif;
   font-weight: 600;
 
   display: flex;
@@ -313,7 +333,6 @@ export const PlayerOnField = styled.div<PlayersOnFieldProps>`
 
     color: ${(props) => props.theme.black};
     font-size: 0.875rem;
-    font-family: 'Titillium Web', sans-serif;
     font-weight: 400;
   }
 `
@@ -325,7 +344,6 @@ export const FormationWrapper = styled.div`
 
   color: ${(props) => props.theme.black};
   font-size: 1.6rem;
-  font-family: 'Titillium Web', sans-serif;
   font-weight: 600;
 
   span {
@@ -348,7 +366,6 @@ export const FinalRankingContainer = styled.div`
       padding: 0.5rem;
       text-align: center;
       color: ${(props) => props.theme.white};
-      font-family: 'Titillium Web', sans-serif;
       font-weight: 600;
       font-size: 1.3rem;
     }
@@ -368,7 +385,6 @@ export const FinalRankingContainer = styled.div`
       border-top: 2px solid ${(props) => props.theme.black};
       padding: 0.5rem;
       font-size: 1rem;
-      font-family: 'Titillium Web', sans-serif;
       font-weight: 400;
       line-height: 1.6;
       text-align: center;

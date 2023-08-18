@@ -14,7 +14,6 @@ export const TitleCategoryContainer = styled.li`
 
   h2 {
     color: ${(props) => props.theme.red};
-    font-family: 'Titillium Web', sans-serif;
     font-weight: 900;
     font-size: 3.5rem;
     letter-spacing: 2px;
@@ -36,7 +35,6 @@ export const TitleCategoryContainer = styled.li`
   p {
     padding: 1rem 2rem;
 
-    font-family: 'Titillium Web', sans-serif;
     font-weight: 600;
     font-size: 1.2rem;
   }

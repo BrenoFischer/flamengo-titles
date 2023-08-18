@@ -11,7 +11,6 @@ export const UpperHeader = styled.div`
 
   position: relative;
 
-  font-family: 'Titillium Web', sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
   color: ${(props) => props.theme.black};
@@ -72,7 +71,6 @@ export const CoverHeader = styled.div<CoverHeaderProps>`
 
     padding: 0 6rem;
     color: ${(props) => props.theme.white};
-    font-family: 'Titillium Web', sans-serif;
     font-weight: 700;
     font-size: 3.5rem;
     letter-spacing: 3px;

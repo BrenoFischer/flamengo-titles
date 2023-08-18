@@ -5,6 +5,9 @@ export const PageNotFoundContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 1.5rem;
+
+  text-align: center;
 
   height: 100vh;
 
@@ -15,7 +18,6 @@ export const PageNotFoundContainer = styled.div`
   h2 {
     margin-top: 2rem;
     color: ${(props) => props.theme.red};
-    font-family: 'Titillium Web', sans-serif;
     font-weight: 700;
     font-size: 3.5rem;
     letter-spacing: 2px;
@@ -24,7 +26,6 @@ export const PageNotFoundContainer = styled.div`
 
   p {
     color: ${(props) => props.theme.black};
-    font-family: 'Titillium Web', sans-serif;
     font-weight: 600;
     font-size: 1.4rem;
   }
@@ -32,7 +33,6 @@ export const PageNotFoundContainer = styled.div`
   a {
     text-decoration: none;
     color: ${(props) => props.theme.red};
-    font-family: 'Titillium Web', sans-serif;
     font-weight: 700;
     font-size: 1.4rem;
   }
