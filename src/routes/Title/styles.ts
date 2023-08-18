@@ -42,6 +42,16 @@ export const LanguageSelectorContainer = styled.div`
   gap: 0.5rem;
 `
 
+export const FlamengoLogoContainer = styled.div`
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+
+  img {
+    height: 4rem;
+  }
+`
+
 export const TitleSectionH2 = styled.h2`
   display: flex;
   align-items: center;

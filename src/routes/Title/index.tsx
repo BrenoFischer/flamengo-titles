@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { MdOutlineStadium } from 'react-icons/md'
 import { BsCalendarDate } from 'react-icons/bs'
@@ -10,6 +10,7 @@ import {
   CheckboxWrapper,
   DateContainer,
   FinalRankingContainer,
+  FlamengoLogoContainer,
   FootballFieldWrapper,
   FormationWrapper,
   LanguageSelectorContainer,
@@ -26,6 +27,7 @@ import {
 import ReactCountryFlag from 'react-country-flag'
 import FootballField from '../../assets/football-field.png'
 import { LanguageContext } from '../../contexts/LanguageContext'
+import FlamengoLogo from '../../assets/flamengo.png'
 
 interface PlayerType {
   name: string
@@ -366,6 +368,11 @@ export default function Title() {
                 }}
               />
             </LanguageSelectorContainer>
+            <FlamengoLogoContainer>
+              <Link to="/">
+                <img src={FlamengoLogo} alt="Flamengo Rowing Shield" />
+              </Link>
+            </FlamengoLogoContainer>
           </header>
 
           <main>
