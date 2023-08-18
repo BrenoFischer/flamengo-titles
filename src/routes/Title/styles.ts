@@ -22,7 +22,7 @@ export const TitleContainer = styled.div`
       text-shadow: 4px 4px 20px #000;
     }
 
-    img {
+    > img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -32,6 +32,14 @@ export const TitleContainer = styled.div`
   main {
     padding: 0 10rem 10rem;
   }
+`
+
+export const LanguageSelectorContainer = styled.div`
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  display: flex;
+  gap: 0.5rem;
 `
 
 export const TitleSectionH2 = styled.h2`

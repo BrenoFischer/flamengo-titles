@@ -12,6 +12,7 @@ import {
   FinalRankingContainer,
   FootballFieldWrapper,
   FormationWrapper,
+  LanguageSelectorContainer,
   LastMatchContainer,
   PlayerOnField,
   SquadContainer,
@@ -108,7 +109,7 @@ interface TitleInformation {
 }
 
 export default function Title() {
-  const { activeLanguage } = useContext(LanguageContext)
+  const { activeLanguage, changeActiveLanguage } = useContext(LanguageContext)
   const [showPlayers, setShowPlayers] = useState(false)
   const [titleInformation, setTitleInformation] = useState<TitleInformation>({
     coverImg: '',
@@ -335,6 +336,36 @@ export default function Title() {
               {category} - {year}
             </h1>
             <img src={titleInformation.coverImg} alt="" />
+            <LanguageSelectorContainer>
+              <ReactCountryFlag
+                onClick={() => changeActiveLanguage('PT')}
+                svg
+                countryCode={'BR'}
+                style={{
+                  fontSize: '2.2rem',
+                  cursor: 'pointer',
+                  borderBottom:
+                    activeLanguage === 'PT'
+                      ? '3px solid white'
+                      : '3px solid transparent',
+                  padding: '0 0.1rem',
+                }}
+              />
+              <ReactCountryFlag
+                onClick={() => changeActiveLanguage('EN')}
+                svg
+                countryCode={'US'}
+                style={{
+                  fontSize: '2.2rem',
+                  cursor: 'pointer',
+                  borderBottom:
+                    activeLanguage === 'EN'
+                      ? '3px solid white'
+                      : '3px solid transparent',
+                  padding: '0 0.1rem',
+                }}
+              />
+            </LanguageSelectorContainer>
           </header>
 
           <main>
