@@ -1,7 +1,9 @@
 import {
-  FirstPhraseWrapper,
+  CoverHeader,
+  // FirstPhraseWrapper,
+  LanguageSelectorContainer,
   LowerHeader,
-  SecondPhraseWrapper,
+  // SecondPhraseWrapper,
   UpperHeader,
 } from './styles'
 import FlamengoLogo from '../../assets/flamengo.png'
@@ -9,6 +11,7 @@ import { useEffect, useState, useContext } from 'react'
 import { useSpring, animated } from '@react-spring/web'
 import { LanguageContext } from '../../contexts/LanguageContext'
 import ReactCountryFlag from 'react-country-flag'
+import CoverPhoto from '../../assets/cover.jpg'
 
 interface PhraseProps {
   children: React.ReactNode
@@ -82,14 +85,14 @@ export default function Header() {
   return (
     <header>
       <UpperHeader>
-        <FirstPhraseWrapper>{headerPhrases[phraseIndex][0]}</FirstPhraseWrapper>
+        {/* <FirstPhraseWrapper>{headerPhrases[phraseIndex][0]}</FirstPhraseWrapper> */}
         <img src={FlamengoLogo} alt="Flamengo Rowing Shield" />
-        <SecondPhraseWrapper>
+        {/* <SecondPhraseWrapper>
           {headerPhrases[phraseIndex][1]}
-        </SecondPhraseWrapper>
+        </SecondPhraseWrapper> */}
       </UpperHeader>
       <LowerHeader>
-        <>
+        <LanguageSelectorContainer>
           <ReactCountryFlag
             onClick={() => changeActiveLanguage('PT')}
             svg
@@ -99,7 +102,7 @@ export default function Header() {
               cursor: 'pointer',
               borderBottom:
                 activeLanguage === 'PT'
-                  ? '3px solid black'
+                  ? '3px solid white'
                   : '3px solid transparent',
               padding: '0 0.1rem',
             }}
@@ -113,13 +116,20 @@ export default function Header() {
               cursor: 'pointer',
               borderBottom:
                 activeLanguage === 'EN'
-                  ? '3px solid black'
+                  ? '3px solid white'
                   : '3px solid transparent',
               padding: '0 0.1rem',
             }}
           />
-        </>
+        </LanguageSelectorContainer>
       </LowerHeader>
+      <CoverHeader coverPhoto={CoverPhoto}>
+        <h1>
+          {activeLanguage === 'PT'
+            ? 'Conheça as principais glórias do Flamengo ao longo de mais um século de história'
+            : 'Discover the main glories of Flamengo throughout another century of history.'}
+        </h1>
+      </CoverHeader>
     </header>
   )
 }

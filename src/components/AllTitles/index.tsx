@@ -1,11 +1,7 @@
-import { useContext } from 'react'
 import TitleCategory from '../TitleCategory'
 import { AllTitlesContainer } from './styles'
-import { LanguageContext } from '../../contexts/LanguageContext'
 
 export default function AllTitles() {
-  const { activeLanguage } = useContext(LanguageContext)
-
   const libertadoresTitles = [
     { year: '1981', disabledLink: false },
     { year: '2019', disabledLink: false },
@@ -75,11 +71,6 @@ export default function AllTitles() {
 
   return (
     <AllTitlesContainer>
-      <h1>
-        {activeLanguage === 'PT'
-          ? 'Conheça as principais glórias do Flamengo ao longo de mais um século de história'
-          : 'Discover the main glories of Flamengo throughout another century of history.'}
-      </h1>
       <ul>
         <TitleCategory category="Libertadores" titles={libertadoresTitles} />
         <TitleCategory category="Mundial" titles={worldTitles} />

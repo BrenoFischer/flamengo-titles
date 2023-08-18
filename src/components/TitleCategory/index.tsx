@@ -9,6 +9,7 @@ interface Title {
 interface TitleCategoryProps {
   category: string
   titles: Title[]
+  logo?: string
 }
 
 export default function TitleCategory({

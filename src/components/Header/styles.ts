@@ -1,14 +1,14 @@
 import { styled } from 'styled-components'
 
 export const UpperHeader = styled.div`
-  background: ${(props) => props.theme.red};
+  /* background: rgba(0, 0, 0, 1); */
+  background: transparent;
   height: 6rem;
   width: 100%;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0 15px #000;
 
   position: relative;
 
@@ -21,7 +21,7 @@ export const UpperHeader = styled.div`
   transition: all 0.2 ease-out;
 
   span {
-    color: ${(props) => props.theme.white};
+    color: ${(props) => props.theme.red};
   }
 
   img {
@@ -49,14 +49,47 @@ export const SecondPhraseWrapper = styled.div`
   margin-left: 5rem;
 `
 
-export const LowerHeader = styled.div`
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
+export const LowerHeader = styled.div``
 
-  svg: {
-    cursor: pointer;
-    border: 1px solid black;
+export const LanguageSelectorContainer = styled.div`
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  display: flex;
+  gap: 1rem;
+`
+
+interface CoverHeaderProps {
+  coverPhoto: string
+}
+
+export const CoverHeader = styled.div<CoverHeaderProps>`
+  height: 100vh;
+  margin-top: -6rem;
+
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.8),
+      rgba(255, 255, 255, 0.2)
+    ),
+    url(${(props) => props.coverPhoto});
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  box-shadow: 0 0 15px #000;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  h1 {
+    margin-top: 10rem;
+    padding: 0 6rem;
+    color: ${(props) => props.theme.white};
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 700;
+    font-size: 3.5rem;
+    letter-spacing: 3px;
+    margin-bottom: 10rem;
   }
 `

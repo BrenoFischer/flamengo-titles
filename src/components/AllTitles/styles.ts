@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
 export const AllTitlesContainer = styled.main`
-  margin-top: 14rem;
+  margin-top: 5rem;
 
   h1 {
     padding: 0 10rem;
@@ -14,7 +14,7 @@ export const AllTitlesContainer = styled.main`
   }
 
   ul {
-    background-color: ${(props) => props.theme.gray};
+    background-color: ${(props) => props.theme.white};
     padding: 4rem 10rem;
   }
 `
