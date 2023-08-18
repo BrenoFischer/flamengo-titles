@@ -1,7 +1,6 @@
 import { styled } from 'styled-components'
 
 export const UpperHeader = styled.div`
-  /* background: rgba(0, 0, 0, 1); */
   background: transparent;
   height: 6rem;
   width: 100%;
@@ -55,8 +54,8 @@ export const CoverHeader = styled.div<CoverHeaderProps>`
 
   background: linear-gradient(
       0deg,
-      rgba(0, 0, 0, 0.8),
-      rgba(255, 255, 255, 0.2)
+      rgba(0, 0, 0, 0.4),
+      rgba(255, 255, 255, 0.1)
     ),
     url(${(props) => props.coverPhoto});
   background-size: cover;
@@ -69,13 +68,14 @@ export const CoverHeader = styled.div<CoverHeaderProps>`
   text-align: center;
 
   h1 {
-    margin-top: 10rem;
+    margin: 10rem 0;
+
     padding: 0 6rem;
     color: ${(props) => props.theme.white};
     font-family: 'Titillium Web', sans-serif;
     font-weight: 700;
     font-size: 3.5rem;
     letter-spacing: 3px;
-    margin-bottom: 10rem;
+    text-shadow: 4px 4px 20px #000;
   }
 `

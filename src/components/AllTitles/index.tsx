@@ -75,8 +75,8 @@ export default function AllTitles() {
         <TitleCategory category="Libertadores" titles={libertadoresTitles} />
         <TitleCategory category="Mundial" titles={worldTitles} />
         <TitleCategory category="Brasileiro" titles={brasileiroTitles} />
-        <TitleCategory category="Mercosul" titles={mercosulTitles} />
         <TitleCategory category="Copa do Brasil" titles={copaDoBrasilTitles} />
+        <TitleCategory category="Mercosul" titles={mercosulTitles} />
         <TitleCategory category="Carioca" titles={cariocaTitles} />
       </ul>
     </AllTitlesContainer>
