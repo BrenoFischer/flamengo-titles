@@ -56,7 +56,7 @@ export const LanguageSelectorContainer = styled.div`
   top: 1rem;
   right: 2rem;
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
 `
 
 interface CoverHeaderProps {
