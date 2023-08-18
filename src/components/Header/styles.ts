@@ -35,20 +35,6 @@ export const UpperHeader = styled.div`
   }
 `
 
-export const FirstPhraseWrapper = styled.div`
-  width: 50%;
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 5rem;
-`
-
-export const SecondPhraseWrapper = styled.div`
-  width: 50%;
-  display: flex;
-  justify-content: flex-start;
-  margin-left: 5rem;
-`
-
 export const LowerHeader = styled.div``
 
 export const LanguageSelectorContainer = styled.div`
