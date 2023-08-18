@@ -18,6 +18,8 @@ export default function TitleCategory({
 }: TitleCategoryProps) {
   const quantityOfTitles = titles.length
 
+  const categoryWithoutSpaces = category.replace(/\s/g, '')
+
   return (
     <TitleCategoryContainer>
       <h2>
@@ -28,7 +30,10 @@ export default function TitleCategory({
           title.disabledLink ? (
             <DisabledLink key={title.year}>{title.year}</DisabledLink>
           ) : (
-            <Link key={title.year} to={`title/${category}/${title.year}`}>
+            <Link
+              key={title.year}
+              to={`title/${categoryWithoutSpaces}/${title.year}`}
+            >
               <EnabledLink>{title.year}</EnabledLink>
             </Link>
           ),

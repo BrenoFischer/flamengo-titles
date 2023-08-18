@@ -8,7 +8,7 @@ export default function AllTitles() {
     { year: '2022', disabledLink: false },
   ]
 
-  const worldTitles = [{ year: '1981', disabledLink: true }]
+  const worldTitles = [{ year: '1981', disabledLink: false }]
 
   const brasileiroTitles = [
     { year: '1980', disabledLink: true },
@@ -26,7 +26,7 @@ export default function AllTitles() {
     { year: '1990', disabledLink: true },
     { year: '2006', disabledLink: true },
     { year: '2013', disabledLink: true },
-    { year: '2022', disabledLink: true },
+    { year: '2022', disabledLink: false },
   ]
 
   const cariocaTitles = [
@@ -75,7 +75,7 @@ export default function AllTitles() {
         <TitleCategory category="Libertadores" titles={libertadoresTitles} />
         <TitleCategory category="Mundial" titles={worldTitles} />
         <TitleCategory category="Brasileiro" titles={brasileiroTitles} />
-        <TitleCategory category="Copa do Brasil" titles={copaDoBrasilTitles} />
+        <TitleCategory category="Copa Do Brasil" titles={copaDoBrasilTitles} />
         <TitleCategory category="Mercosul" titles={mercosulTitles} />
         <TitleCategory category="Carioca" titles={cariocaTitles} />
       </ul>

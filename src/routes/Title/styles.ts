@@ -191,6 +191,8 @@ export const SquadContainer = styled(SectionLayout)`
       rgba(18, 30, 39, 0.2) 5px 5px,
       rgba(18, 30, 39, 0.2) 10px 10px;
 
+    min-width: 300px;
+
     th {
       background-color: ${(props) => props.theme.red};
       padding: 0.5rem;
