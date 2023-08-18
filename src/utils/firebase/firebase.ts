@@ -15,10 +15,15 @@ initializeApp(firebaseConfig)
 export const db = getFirestore()
 
 export const getTitleInformation = async (category: string, year: string) => {
-  const ref = doc(db, 'titlesCategories', category.toLowerCase())
-  const docSnap = await getDoc(ref)
+  try {
+    const ref = doc(db, 'titlesCategories', category.toLowerCase())
+    const docSnap = await getDoc(ref)
 
-  return docSnap.data()![year]
+    return docSnap.data()![year]
+  } catch (error) {
+    console.log(error)
+    return undefined
+  }
 }
 
 export const saveNewChampionship = async (category: string) => {

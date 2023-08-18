@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { MdOutlineStadium } from 'react-icons/md'
 import { getTitleInformation } from '../../utils/firebase/firebase'
@@ -163,6 +163,7 @@ export default function Title() {
     },
   })
   const { category, year } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function fetchTitleInformation() {
@@ -171,12 +172,13 @@ export default function Title() {
           category,
           year,
         )
-        setTitleInformation(fetchedTitleInformation)
+        if (fetchedTitleInformation === undefined) navigate('*')
+        else setTitleInformation(fetchedTitleInformation)
       }
     }
 
     fetchTitleInformation()
-  }, [category, year])
+  }, [category, year, navigate])
 
   interface TitleSectionHeaderProps {
     ptText: string
