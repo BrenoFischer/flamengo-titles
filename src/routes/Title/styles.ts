@@ -83,21 +83,26 @@ export const LastMatchContainer = styled(SectionLayout)`
 
   img {
     transform: translateY(15%);
+
+    &:not(:last-child) {
+      margin-left: -4px;
+    }
   }
 `
 
 export const StadiumContainer = styled.div`
-  margin-top: 5rem;
+  margin-top: 3rem;
   display: flex;
-
   align-items: center;
+
   color: ${(props) => props.theme.black};
   font-family: 'Titillium Web', sans-serif;
   font-weight: 600;
   font-size: 1.5rem;
 
   svg {
-    margin-right: 1rem;
+    margin-right: 0.3rem;
+    margin-left: -4px;
     color: ${(props) => props.theme.black};
     font-size: 2.5rem;
   }
@@ -110,6 +115,32 @@ export const StadiumContainer = styled.div`
     color: ${(props) => props.theme.red};
     font-weight: 900;
     font-size: 2rem;
+  }
+`
+
+export const DateContainer = styled.div`
+  margin-top: 3rem;
+  margin-left: 1px;
+
+  color: ${(props) => props.theme.black};
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 600;
+  font-size: 1.8rem;
+
+  svg {
+    margin-right: 0.3rem;
+    color: ${(props) => props.theme.black};
+    font-size: 2rem;
+  }
+`
+
+export const TopScorerContainer = styled(SectionLayout)`
+  h3 {
+    span {
+      font-size: 2.5rem;
+      margin: 0 0.4rem 0 1rem;
+      color: ${(props) => props.theme.red};
+    }
   }
 `
 
@@ -343,16 +374,6 @@ export const FinalRankingContainer = styled.div`
 
     td:last-child {
       padding-right: 1.5rem;
-    }
-  }
-`
-
-export const TopScorerContainer = styled(SectionLayout)`
-  h3 {
-    span {
-      font-size: 2.5rem;
-      margin: 0 0.4rem 0 1rem;
-      color: ${(props) => props.theme.red};
     }
   }
 `

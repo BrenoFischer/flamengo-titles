@@ -158,6 +158,7 @@ export const saveNewChampionship = async (category: string) => {
         countryCode: 'BR',
         score: '2x1',
         team: 'Grêmio',
+        date: '06/12/2009',
         stadium: {
           name: 'Maracanã',
           country: 'BR',

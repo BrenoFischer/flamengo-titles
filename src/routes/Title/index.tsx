@@ -2,11 +2,13 @@ import { useEffect, useState, useContext } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { MdOutlineStadium } from 'react-icons/md'
+import { BsCalendarDate } from 'react-icons/bs'
 import { getTitleInformation } from '../../utils/firebase/firebase'
 import {
   CheckboxComponent,
   CheckboxIcon,
   CheckboxWrapper,
+  DateContainer,
   FinalRankingContainer,
   FootballFieldWrapper,
   FormationWrapper,
@@ -89,6 +91,7 @@ interface TitleInformation {
     team: string
     countryCode: string
     stadium: Stadium
+    date: string
   }
   finalRanking: FinalRanking
   topScorer: {
@@ -113,6 +116,7 @@ export default function Title() {
       score: '',
       team: '',
       countryCode: '',
+      date: '',
       stadium: { name: '', country: '', location: '', spectators: '' },
     },
     finalRanking: {
@@ -354,7 +358,7 @@ export default function Title() {
                 />
               </div>
               <StadiumContainer>
-                {<MdOutlineStadium />}
+                <MdOutlineStadium />
                 <span>
                   {titleInformation.finalMatch.stadium.spectators}
                 </span>{' '}
@@ -367,7 +371,21 @@ export default function Title() {
                   style={{ width: '1.5rem' }}
                 />
               </StadiumContainer>
+              <DateContainer>
+                <BsCalendarDate />
+                <span>{titleInformation.finalMatch.date}</span>
+              </DateContainer>
             </LastMatchContainer>
+
+            <TopScorerContainer>
+              <TitleSectionHeader ptText="Artilheiro" enText="Top Scorer" />
+              <h3>
+                {titleInformation.topScorer.player} -{' '}
+                {titleInformation.topScorer.team}:{' '}
+                <span>{titleInformation.topScorer.goals}</span>
+                {activeLanguage === 'PT' ? 'gols' : 'goals'}
+              </h3>
+            </TopScorerContainer>
 
             <WinningSquadPhotoContainer>
               <TitleSectionHeader
@@ -484,16 +502,6 @@ export default function Title() {
                 </FinalRankingContainer>
               </>
             )}
-
-            <TopScorerContainer>
-              <TitleSectionHeader ptText="Artilheiro" enText="Top Scorer" />
-              <h3>
-                {titleInformation.topScorer.player} -{' '}
-                {titleInformation.topScorer.team}:{' '}
-                <span>{titleInformation.topScorer.goals}</span>
-                {activeLanguage === 'PT' ? 'gols' : 'goals'}
-              </h3>
-            </TopScorerContainer>
           </main>
         </TitleContainer>
       )}
