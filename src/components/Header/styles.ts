@@ -16,6 +16,7 @@ export const UpperHeader = styled.div`
   font-weight: 700;
   font-size: 1.5rem;
   color: ${(props) => props.theme.black};
+  text-transform: uppercase;
 
   transition: all 0.2 ease-out;
 
