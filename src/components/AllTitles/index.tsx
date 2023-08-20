@@ -17,7 +17,7 @@ export default function AllTitles() {
     { year: '1992', disabledLink: true },
     { year: '2009', disabledLink: false },
     { year: '2019', disabledLink: true },
-    { year: '2020', disabledLink: true },
+    { year: '2020', disabledLink: false },
   ]
 
   const mercosulTitles = [{ year: '1999', disabledLink: true }]
