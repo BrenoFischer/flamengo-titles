@@ -1,179 +1,57 @@
 import { useEffect, useState, useContext } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import * as Checkbox from '@radix-ui/react-checkbox'
-import { MdOutlineStadium } from 'react-icons/md'
-import { BsCalendarDate } from 'react-icons/bs'
+import { useNavigate, useParams } from 'react-router-dom'
+
 import { getTitleInformation } from '../../utils/firebase/firebase'
+
+import { LanguageContext } from '../../contexts/LanguageContext'
+
+import TitleHeader from './TitleHeader'
+import LastMatch from './LastMatch'
+import Squad from './Squad'
 import {
-  CheckboxComponent,
-  CheckboxIcon,
-  CheckboxWrapper,
-  DateContainer,
+  FinalRanking,
+  TitleInformation,
+  titleInformationScheme,
+} from './utils/titleInformationScheme'
+
+import {
   FinalRankingContainer,
-  FlamengoLogoContainer,
-  FootballFieldWrapper,
-  FormationWrapper,
-  LanguageSelectorContainer,
-  LastMatchContainer,
-  PlayerOnField,
-  SquadContainer,
-  SquadInformationContainer,
-  StadiumContainer,
   TitleContainer,
   TitleSectionH2,
   TopScorerContainer,
   WinningSquadPhotoContainer,
 } from './styles'
-import ReactCountryFlag from 'react-country-flag'
-import FootballField from '../../assets/football-field.png'
-import { LanguageContext } from '../../contexts/LanguageContext'
-import FlamengoLogo from '../../assets/flamengo.png'
 
-interface PlayerType {
-  name: string
-  number: string
-  nationality: string
+interface TitleSectionHeaderProps {
+  ptText: string
+  enText: string
+  activeLanguage: string
 }
 
-interface WinningSquadPlayers {
-  1: PlayerType
-  2: PlayerType
-  3: PlayerType
-  4: PlayerType
-  5: PlayerType
-  6: PlayerType
-  7: PlayerType
-  8: PlayerType
-  9: PlayerType
-  10: PlayerType
-  11: PlayerType
-}
-
-interface TeamFromFinalRanking {
-  name: string
-  points: string
-  gc: number
-  gm: number
-}
-
-interface FinalRanking {
-  1: TeamFromFinalRanking
-  2: TeamFromFinalRanking
-  3: TeamFromFinalRanking
-  4: TeamFromFinalRanking
-  5: TeamFromFinalRanking
-  6: TeamFromFinalRanking
-  7: TeamFromFinalRanking
-  8: TeamFromFinalRanking
-  9: TeamFromFinalRanking
-  10: TeamFromFinalRanking
-  11: TeamFromFinalRanking
-  12: TeamFromFinalRanking
-  13: TeamFromFinalRanking
-  14: TeamFromFinalRanking
-  15: TeamFromFinalRanking
-  16: TeamFromFinalRanking
-  17: TeamFromFinalRanking
-  18: TeamFromFinalRanking
-  19: TeamFromFinalRanking
-  20: TeamFromFinalRanking
-}
-
-interface Stadium {
-  name: string
-  country: string
-  location: string
-  spectators: string
-}
-
-interface TitleInformation {
-  coverImg: string
-  roundRobin: boolean
-  finalMatch: {
-    score: string
-    team: string
-    countryCode: string
-    stadium: Stadium
-    date: string
-  }
-  finalRanking: FinalRanking
-  topScorer: {
-    player: string
-    team: string
-    goals: string
-  }
-  winningSquad: {
-    formation: string
-    photo: string
-    coach: { name: string; country: string }
-    players: WinningSquadPlayers
-  }
+export function TitleSectionHeader({
+  ptText,
+  enText,
+  activeLanguage,
+}: TitleSectionHeaderProps) {
+  return (
+    <TitleSectionH2>
+      <span>|</span> {activeLanguage === 'PT' ? ptText : enText}
+    </TitleSectionH2>
+  )
 }
 
 export default function Title() {
-  const { activeLanguage, changeActiveLanguage } = useContext(LanguageContext)
-  const [showPlayers, setShowPlayers] = useState(false)
-  const [titleInformation, setTitleInformation] = useState<TitleInformation>({
-    coverImg: '',
-    finalMatch: {
-      score: '',
-      team: '',
-      countryCode: '',
-      date: '',
-      stadium: { name: '', country: '', location: '', spectators: '' },
-    },
-    finalRanking: {
-      1: { name: '', points: '', gc: 0, gm: 0 },
-      2: { name: '', points: '', gc: 0, gm: 0 },
-      3: { name: '', points: '', gc: 0, gm: 0 },
-      4: { name: '', points: '', gc: 0, gm: 0 },
-      5: { name: '', points: '', gc: 0, gm: 0 },
-      6: { name: '', points: '', gc: 0, gm: 0 },
-      7: { name: '', points: '', gc: 0, gm: 0 },
-      8: { name: '', points: '', gc: 0, gm: 0 },
-      9: { name: '', points: '', gc: 0, gm: 0 },
-      10: { name: '', points: '', gc: 0, gm: 0 },
-      11: { name: '', points: '', gc: 0, gm: 0 },
-      12: { name: '', points: '', gc: 0, gm: 0 },
-      13: { name: '', points: '', gc: 0, gm: 0 },
-      14: { name: '', points: '', gc: 0, gm: 0 },
-      15: { name: '', points: '', gc: 0, gm: 0 },
-      16: { name: '', points: '', gc: 0, gm: 0 },
-      17: { name: '', points: '', gc: 0, gm: 0 },
-      18: { name: '', points: '', gc: 0, gm: 0 },
-      19: { name: '', points: '', gc: 0, gm: 0 },
-      20: { name: '', points: '', gc: 0, gm: 0 },
-    },
-    roundRobin: false,
-    topScorer: {
-      player: '',
-      team: '',
-      goals: '',
-    },
-    winningSquad: {
-      formation: '',
-      photo: '',
-      coach: { name: '', country: '' },
-      players: {
-        1: { name: '', nationality: '', number: '' },
-        2: { name: '', nationality: '', number: '' },
-        3: { name: '', nationality: '', number: '' },
-        4: { name: '', nationality: '', number: '' },
-        5: { name: '', nationality: '', number: '' },
-        6: { name: '', nationality: '', number: '' },
-        7: { name: '', nationality: '', number: '' },
-        8: { name: '', nationality: '', number: '' },
-        9: { name: '', nationality: '', number: '' },
-        10: { name: '', nationality: '', number: '' },
-        11: { name: '', nationality: '', number: '' },
-      },
-    },
-  })
+  const { activeLanguage } = useContext(LanguageContext)
+  const [loadingTitle, setLoadingTitle] = useState(false)
+  const [titleInformation, setTitleInformation] = useState<TitleInformation>(
+    titleInformationScheme,
+  )
   const { category, year } = useParams()
   const navigate = useNavigate()
 
   useEffect(() => {
     async function fetchTitleInformation() {
+      setLoadingTitle(true)
       if (category && year !== undefined) {
         const fetchedTitleInformation = await getTitleInformation(
           category,
@@ -182,125 +60,11 @@ export default function Title() {
         if (fetchedTitleInformation === undefined) navigate('*')
         else setTitleInformation(fetchedTitleInformation)
       }
+      setLoadingTitle(false)
     }
 
     fetchTitleInformation()
   }, [category, year, navigate])
-
-  interface TitleSectionHeaderProps {
-    ptText: string
-    enText: string
-  }
-
-  function TitleSectionHeader({ ptText, enText }: TitleSectionHeaderProps) {
-    return (
-      <TitleSectionH2>
-        <span>|</span> {activeLanguage === 'PT' ? ptText : enText}
-      </TitleSectionH2>
-    )
-  }
-
-  interface PlayerTableRowProps {
-    playerNumber: string
-    playerName: string
-    playerNationality: string
-  }
-
-  function PlayerTableRow({
-    playerNumber,
-    playerName,
-    playerNationality,
-  }: PlayerTableRowProps) {
-    return (
-      <tr>
-        <td>{playerNumber}</td>
-        <td>
-          <ReactCountryFlag
-            svg
-            countryCode={playerNationality}
-            style={{ width: '2rem' }}
-          />
-        </td>
-        <td>{playerName}</td>
-      </tr>
-    )
-  }
-
-  function WinningPlayers() {
-    const formation = titleInformation.winningSquad.formation
-
-    let playersPositionOnField: string[][]
-    const defaultFormation = [
-      ['50%', '98%'],
-      ['85%', '75%'],
-      ['30%', '85%'],
-      ['70%', '85%'],
-      ['15%', '75%'],
-      ['50%', '65%'],
-      ['70%', '45%'],
-      ['30%', '45%'],
-      ['50%', '35%'],
-      ['40%', '20%'],
-      ['60%', '20%'],
-    ]
-
-    if (formation === '4-4-2') {
-      playersPositionOnField = defaultFormation
-    } else if (formation === '4-3-3') {
-      playersPositionOnField = [
-        ['50%', '98%'],
-        ['85%', '75%'],
-        ['70%', '85%'],
-        ['30%', '85%'],
-        ['15%', '75%'],
-        ['33%', '60%'],
-        ['75%', '55%'],
-        ['50%', '43%'],
-        ['75%', '25%'],
-        ['25%', '25%'],
-        ['50%', '15%'],
-      ]
-    } else if (formation === '4-2-3-1') {
-      playersPositionOnField = [
-        ['50%', '98%'],
-        ['85%', '75%'],
-        ['70%', '85%'],
-        ['30%', '85%'],
-        ['15%', '75%'],
-        ['50%', '70%'],
-        ['80%', '50%'],
-        ['30%', '55%'],
-        ['25%', '30%'],
-        ['50%', '40%'],
-        ['50%', '20%'],
-      ]
-    } else {
-      playersPositionOnField = defaultFormation
-    }
-
-    return (
-      <>
-        {[...Array.from({ length: 11 }, (_, i) => i + 1)].map((player) => {
-          const playerInfo =
-            titleInformation.winningSquad.players[
-              player.toString() as unknown as keyof WinningSquadPlayers
-            ]
-
-          return (
-            <PlayerOnField
-              key={player}
-              left={playersPositionOnField[player - 1][0]}
-              top={playersPositionOnField[player - 1][1]}
-              showPlayersNames={showPlayers}
-            >
-              {playerInfo.number}
-              <div>{playerInfo.name}</div>
-            </PlayerOnField>
-          )
-        })}
-      </>
-    )
-  }
 
   function FinalRankingTable() {
     return (
@@ -329,94 +93,34 @@ export default function Title() {
 
   return (
     <>
-      {titleInformation.coverImg === '' ? (
-        <></>
+      {loadingTitle ? (
+        <h1>Loading</h1>
       ) : (
         <TitleContainer>
-          <header>
-            <h1>
-              {category} - {year}
-            </h1>
-            <img src={titleInformation.coverImg} alt="" />
-            <LanguageSelectorContainer>
-              <ReactCountryFlag
-                onClick={() => changeActiveLanguage('PT')}
-                svg
-                countryCode={'BR'}
-                style={{
-                  fontSize: '2.2rem',
-                  cursor: 'pointer',
-                  borderBottom:
-                    activeLanguage === 'PT'
-                      ? '3px solid white'
-                      : '3px solid transparent',
-                  padding: '0 0.1rem',
-                }}
-              />
-              <ReactCountryFlag
-                onClick={() => changeActiveLanguage('EN')}
-                svg
-                countryCode={'US'}
-                style={{
-                  fontSize: '2.2rem',
-                  cursor: 'pointer',
-                  borderBottom:
-                    activeLanguage === 'EN'
-                      ? '3px solid white'
-                      : '3px solid transparent',
-                  padding: '0 0.1rem',
-                }}
-              />
-            </LanguageSelectorContainer>
-            <FlamengoLogoContainer>
-              <Link to="/">
-                <img src={FlamengoLogo} alt="Flamengo Rowing Shield" />
-              </Link>
-            </FlamengoLogoContainer>
-          </header>
+          <TitleHeader
+            category={category!}
+            year={year!}
+            coverImg={titleInformation.coverImg}
+          />
 
           <main>
-            <LastMatchContainer>
-              <TitleSectionHeader ptText="Final" enText="Last Match" />
-              <div>
-                <ReactCountryFlag
-                  svg
-                  countryCode="BR"
-                  style={{ width: '2rem' }}
-                />
-                <h3>
-                  Flamengo
-                  <span>{titleInformation.finalMatch.score}</span>{' '}
-                  {titleInformation.finalMatch.team}
-                </h3>
-                <ReactCountryFlag
-                  svg
-                  countryCode={titleInformation.finalMatch.countryCode}
-                  style={{ width: '2rem' }}
-                />
-              </div>
-              <StadiumContainer>
-                <MdOutlineStadium />
-                <span>
-                  {titleInformation.finalMatch.stadium.spectators}
-                </span>{' '}
-                {activeLanguage === 'PT' ? 'Espectadores' : 'Spectators'} -{' '}
-                <span>{titleInformation.finalMatch.stadium.name}</span> -{' '}
-                {titleInformation.finalMatch.stadium.location}
-                <ReactCountryFlag
-                  svg
-                  countryCode={titleInformation.finalMatch.stadium.country}
-                  style={{ width: '1.5rem' }}
-                />
-              </StadiumContainer>
-              <DateContainer>
-                <BsCalendarDate />
-                <span>{titleInformation.finalMatch.date}</span>
-              </DateContainer>
-            </LastMatchContainer>
+            <LastMatch
+              team={titleInformation.finalMatch.team}
+              teamCountry={titleInformation.finalMatch.countryCode}
+              score={titleInformation.finalMatch.score}
+              stadium={titleInformation.finalMatch.stadium.name}
+              stadiumCountry={titleInformation.finalMatch.stadium.country}
+              date={titleInformation.finalMatch.date}
+              location={titleInformation.finalMatch.stadium.location}
+              spectators={titleInformation.finalMatch.stadium.spectators}
+            />
 
             <TopScorerContainer>
-              <TitleSectionHeader ptText="Artilheiro" enText="Top Scorer" />
+              <TitleSectionHeader
+                ptText="Artilheiro"
+                enText="Top Scorer"
+                activeLanguage={activeLanguage}
+              />
               <h3>
                 {titleInformation.topScorer.player} -{' '}
                 {titleInformation.topScorer.team}:{' '}
@@ -427,99 +131,25 @@ export default function Title() {
 
             <WinningSquadPhotoContainer>
               <TitleSectionHeader
+                activeLanguage={activeLanguage}
                 ptText="Foto dos Campeões"
                 enText="Champions Photo"
               />
               <img src={titleInformation.winningSquad.photo} alt="" />
             </WinningSquadPhotoContainer>
 
-            <SquadContainer>
-              <TitleSectionHeader
-                ptText="Elenco Campeão"
-                enText="Champion Squad"
-              />
-              <SquadInformationContainer>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Nº</th>
-                      <th>{activeLanguage === 'PT' ? 'País' : 'Country'}</th>
-                      <th>{activeLanguage === 'PT' ? 'Nome' : 'Name'}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[...Array.from({ length: 11 }, (_, i) => i + 1)].map(
-                      (player) => {
-                        const playerInfo =
-                          titleInformation.winningSquad.players[
-                            player.toString() as unknown as keyof WinningSquadPlayers
-                          ]
-                        return (
-                          <PlayerTableRow
-                            key={player}
-                            playerName={playerInfo.name}
-                            playerNationality={playerInfo.nationality}
-                            playerNumber={playerInfo.number}
-                          />
-                        )
-                      },
-                    )}
-                    <tr>
-                      <td>{activeLanguage === 'PT' ? 'Técnico' : 'Coach'}</td>
-                      <td>
-                        <ReactCountryFlag
-                          svg
-                          countryCode={
-                            titleInformation.winningSquad.coach.country
-                          }
-                          style={{ width: '2rem' }}
-                        />
-                      </td>
-                      <td>{titleInformation.winningSquad.coach.name}</td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <FootballFieldWrapper>
-                  <CheckboxWrapper>
-                    <CheckboxComponent
-                      id="show-players"
-                      checked={showPlayers}
-                      onCheckedChange={() => setShowPlayers(!showPlayers)}
-                    >
-                      <Checkbox.Indicator>
-                        {showPlayers === true && <CheckboxIcon />}
-                      </Checkbox.Indicator>
-                    </CheckboxComponent>
-                    <label htmlFor="show-players">
-                      {activeLanguage === 'PT'
-                        ? 'Mostrar nome dos jogadores'
-                        : 'Display players name'}
-                    </label>
-                  </CheckboxWrapper>
-                  <img
-                    src={FootballField}
-                    alt="Football Field with winning squad"
-                  />
-                  <WinningPlayers />
-                  <FormationWrapper>
-                    <span>
-                      {activeLanguage === 'PT'
-                        ? 'Formação Principal'
-                        : 'Main Starting Line-up'}
-                      :
-                    </span>
-                    {titleInformation.winningSquad.formation}
-                  </FormationWrapper>
-                </FootballFieldWrapper>
-              </SquadInformationContainer>
-            </SquadContainer>
+            <Squad
+              coach={titleInformation.winningSquad.coach}
+              formation={titleInformation.winningSquad.formation}
+              players={titleInformation.winningSquad.players}
+            />
 
             {titleInformation.roundRobin && (
               <>
                 <TitleSectionHeader
                   ptText="Tabela Final"
                   enText="Final Ranking"
+                  activeLanguage={activeLanguage}
                 />
                 <FinalRankingContainer>
                   <table>
