@@ -21,6 +21,8 @@ import {
   TopScorerContainer,
   WinningSquadPhotoContainer,
 } from './styles'
+import LoadingTitleContent from './LoadingTitleContent'
+import GoToTop from '../../utils/auxiliaryFunctions/goToTop'
 
 interface TitleSectionHeaderProps {
   ptText: string
@@ -42,7 +44,7 @@ export function TitleSectionHeader({
 
 export default function Title() {
   const { activeLanguage } = useContext(LanguageContext)
-  const [loadingTitle, setLoadingTitle] = useState(false)
+  const [loadingTitle, setLoadingTitle] = useState(true)
   const [titleInformation, setTitleInformation] = useState<TitleInformation>(
     titleInformationScheme,
   )
@@ -93,8 +95,9 @@ export default function Title() {
 
   return (
     <>
+      <GoToTop />
       {loadingTitle ? (
-        <h1>Loading</h1>
+        <LoadingTitleContent category={category!} year={year!} />
       ) : (
         <TitleContainer>
           <TitleHeader
@@ -114,20 +117,6 @@ export default function Title() {
               location={titleInformation.finalMatch.stadium.location}
               spectators={titleInformation.finalMatch.stadium.spectators}
             />
-
-            <TopScorerContainer>
-              <TitleSectionHeader
-                ptText="Artilheiro"
-                enText="Top Scorer"
-                activeLanguage={activeLanguage}
-              />
-              <h3>
-                {titleInformation.topScorer.player} -{' '}
-                {titleInformation.topScorer.team}:{' '}
-                <span>{titleInformation.topScorer.goals}</span>
-                {activeLanguage === 'PT' ? 'gols' : 'goals'}
-              </h3>
-            </TopScorerContainer>
 
             <WinningSquadPhotoContainer>
               <TitleSectionHeader
@@ -170,6 +159,20 @@ export default function Title() {
                 </FinalRankingContainer>
               </>
             )}
+
+            <TopScorerContainer>
+              <TitleSectionHeader
+                ptText="Artilheiro"
+                enText="Top Scorer"
+                activeLanguage={activeLanguage}
+              />
+              <h3>
+                {titleInformation.topScorer.player} -{' '}
+                {titleInformation.topScorer.team}:{' '}
+                <span>{titleInformation.topScorer.goals}</span>
+                {activeLanguage === 'PT' ? 'gols' : 'goals'}
+              </h3>
+            </TopScorerContainer>
           </main>
         </TitleContainer>
       )}
