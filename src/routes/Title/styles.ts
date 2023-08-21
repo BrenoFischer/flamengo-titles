@@ -41,6 +41,16 @@ export const SectionLayout = styled.section`
   }
 `
 
+export const ResumeContainer = styled(SectionLayout)`
+  p {
+    white-space: pre-wrap;
+    line-break: auto;
+    text-align: justify;
+    line-height: 2rem;
+    font-weight: 500;
+  }
+`
+
 export const TopScorerContainer = styled(SectionLayout)`
   h3 {
     span {

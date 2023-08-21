@@ -58,6 +58,7 @@ interface Stadium {
 export interface TitleInformation {
   coverImg: string
   roundRobin: boolean
+  resume: { en: string; pt: string }
   finalMatch: {
     score: string
     team: string
@@ -110,6 +111,7 @@ export const titleInformationScheme = {
     19: { name: '', points: '', gc: 0, gm: 0 },
     20: { name: '', points: '', gc: 0, gm: 0 },
   },
+  resume: { en: '', pt: '' },
   roundRobin: false,
   topScorer: {
     player: '',

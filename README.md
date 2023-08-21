@@ -1,4 +1,4 @@
-<img src="./src/assets/flamengo.png" />
+<img src="./src/assets/flamengo.png" align="center"  />
 
 # Flamengo Titles
 

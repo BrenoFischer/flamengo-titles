@@ -16,6 +16,7 @@ import {
 
 import {
   FinalRankingContainer,
+  ResumeContainer,
   TitleContainer,
   TitleSectionH2,
   TopScorerContainer,
@@ -107,6 +108,19 @@ export default function Title() {
           />
 
           <main>
+            <ResumeContainer>
+              <TitleSectionHeader
+                activeLanguage={activeLanguage}
+                ptText="Resumo"
+                enText="Resume"
+              />
+              <p>
+                {activeLanguage === 'PT'
+                  ? titleInformation.resume.pt.replaceAll('\\n', '\n')
+                  : titleInformation.resume.en.replaceAll('\\n', '\n')}
+              </p>
+            </ResumeContainer>
+
             <LastMatch
               team={titleInformation.finalMatch.team}
               teamCountry={titleInformation.finalMatch.countryCode}
