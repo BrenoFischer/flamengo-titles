@@ -1,27 +1,35 @@
-# React + TypeScript + Vite
+<style>
+   .logo-container {
+      display: flex;
+      justify-content: center;
+   }
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+   .logo {
+      height: 100px;
+   }
+</style>
 
-Currently, two official plugins are available:
+<div class='logo-container'>
+   <img src="./src/assets/flamengo.png" class='logo' />
+</div>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Flamengo Titles
 
-## Expanding the ESLint configuration
+Explore the main glories of Flamengo throughout another century of history.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Informative website, full of historical facts, pictures and information of the main trophies Flamengo has won so far.
 
-- Configure the top-level `parserOptions` property like this:
+Access it on: [https://flamengo-titles.netlify.app/](https://flamengo-titles.netlify.app/)
 
-```js
+If you are still not familiarized with this amazing football club, don't wait any further and start exploring all these honours.
+
+<!-- ```js
    parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
     project: ['./tsconfig.json', './tsconfig.node.json'],
     tsconfigRootDir: __dirname,
    },
-```
+``` -->
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 
