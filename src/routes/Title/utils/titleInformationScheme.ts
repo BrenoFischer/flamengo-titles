@@ -67,10 +67,23 @@ export interface TitleInformation {
     date: string
   }
   finalRanking: FinalRanking
-  topScorer: {
-    player: string
-    team: string
-    goals: string
+  statistics: {
+    teamsQuantity: string
+    period: { from: Date; to: Date }
+    avarageGoals: string
+    flamengo: {
+      defeats: string
+      draws: string
+      wins: string
+      goalsAgainst: string
+      goalsScored: string
+      matchesPlayed: string
+    }
+    topScorer: {
+      player: string
+      team: string
+      goals: string
+    }
   }
   winningSquad: {
     formation: string
@@ -113,10 +126,23 @@ export const titleInformationScheme = {
   },
   resume: { en: '', pt: '' },
   roundRobin: false,
-  topScorer: {
-    player: '',
-    team: '',
-    goals: '',
+  statistics: {
+    teamsQuantity: '',
+    period: { from: new Date(), to: new Date() },
+    avarageGoals: '',
+    flamengo: {
+      defeats: '',
+      draws: '',
+      wins: '',
+      goalsAgainst: '',
+      goalsScored: '',
+      matchesPlayed: '',
+    },
+    topScorer: {
+      player: '',
+      team: '',
+      goals: '',
+    },
   },
   winningSquad: {
     formation: '',

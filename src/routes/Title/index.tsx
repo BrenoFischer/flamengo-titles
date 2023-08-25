@@ -19,11 +19,11 @@ import {
   ResumeContainer,
   TitleContainer,
   TitleSectionH2,
-  TopScorerContainer,
   WinningSquadPhotoContainer,
 } from './styles'
 import LoadingTitleContent from './LoadingTitleContent'
 import GoToTop from '../../utils/auxiliaryFunctions/goToTop'
+import StatisticsCarousel from './StatisticsCarousel'
 
 interface TitleSectionHeaderProps {
   ptText: string
@@ -174,19 +174,7 @@ export default function Title() {
               </>
             )}
 
-            <TopScorerContainer>
-              <TitleSectionHeader
-                ptText="Artilheiro"
-                enText="Top Scorer"
-                activeLanguage={activeLanguage}
-              />
-              <h3>
-                {titleInformation.topScorer.player} -{' '}
-                {titleInformation.topScorer.team}:{' '}
-                <span>{titleInformation.topScorer.goals}</span>
-                {activeLanguage === 'PT' ? 'gols' : 'goals'}
-              </h3>
-            </TopScorerContainer>
+            <StatisticsCarousel titleInformation={titleInformation} />
           </main>
         </TitleContainer>
       )}

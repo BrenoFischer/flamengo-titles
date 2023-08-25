@@ -51,16 +51,6 @@ export const ResumeContainer = styled(SectionLayout)`
   }
 `
 
-export const TopScorerContainer = styled(SectionLayout)`
-  h3 {
-    span {
-      font-size: 2.5rem;
-      margin: 0 0.4rem 0 1rem;
-      color: ${(props) => props.theme.red};
-    }
-  }
-`
-
 export const WinningSquadPhotoContainer = styled.div`
   img {
     max-width: 60rem;
