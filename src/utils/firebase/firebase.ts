@@ -166,10 +166,26 @@ export const saveNewChampionship = async (category: string) => {
           spectators: '0',
         },
       },
-      topScorer: {
-        goals: '18',
-        player: 'Claudinho',
-        team: 'Bragantino',
+      statistics: {
+        avarageGoals: '2.48',
+        flamengo: {
+          defeats: '9',
+          draws: '8',
+          goalsAgainst: '48',
+          goalsScored: '68',
+          matchesPlayed: '38',
+          wins: '21',
+        },
+        period: {
+          from: new Date('2020-08-08').getTime(),
+          to: new Date('2021-02-25').getTime(),
+        },
+        teamsQuantity: '20',
+        topScorer: {
+          goals: '18',
+          player: 'Claudinho',
+          team: 'Bragantino',
+        },
       },
       winningSquad: {
         coach: { name: 'Rogério Ceni', country: 'BR' },
