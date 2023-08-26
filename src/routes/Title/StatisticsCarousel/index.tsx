@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { Key, useContext } from 'react'
 import { HiArrowLeft, HiArrowRight } from 'react-icons/hi'
 import { BiFootball } from 'react-icons/bi'
 import { BsTable, BsShield } from 'react-icons/bs'
@@ -9,7 +9,8 @@ import {
   ChartLabelContainer,
   Slide,
   SlideArrowContainer,
-  SliderWrapper,
+  SlideNumberWrapper,
+  SlideWrapper,
   StatisticsCarouselContainer,
   StatisticsWrapper,
 } from './styles'
@@ -40,9 +41,23 @@ export default function StatisticsCarousel({
 }: StatisticsCarouselProps) {
   const { activeLanguage } = useContext(LanguageContext)
 
+  interface SlideSchemeProps {
+    children: React.ReactNode
+    slideNumber: Key
+  }
+
+  function SlideScheme({ children, slideNumber }: SlideSchemeProps) {
+    return (
+      <Slide>
+        <SlideNumberWrapper>{slideNumber}</SlideNumberWrapper>
+        <SlideWrapper>{children}</SlideWrapper>
+      </Slide>
+    )
+  }
+
   function TopScorerSlide() {
     return (
-      <SliderWrapper>
+      <>
         <h2>
           <BiFootball />
           {activeLanguage === 'PT'
@@ -63,7 +78,7 @@ export default function StatisticsCarousel({
             <span>{titleInformation.statistics.topScorer.goals}</span>
           </div>
         </StatisticsWrapper>
-      </SliderWrapper>
+      </>
     )
   }
 
@@ -76,7 +91,7 @@ export default function StatisticsCarousel({
     const defeats = Number(titleInformation.statistics.flamengo.defeats)
 
     return (
-      <SliderWrapper>
+      <>
         <h2>
           <ImStatsBars />
           {activeLanguage === 'PT'
@@ -109,7 +124,7 @@ export default function StatisticsCarousel({
             </ChartLabelContainer>
           </div>
         </ChartContainer>
-      </SliderWrapper>
+      </>
     )
   }
 
@@ -147,7 +162,7 @@ export default function StatisticsCarousel({
         : finishingMonth + '/' + finishingDay + '/' + finishingYear
 
     return (
-      <SliderWrapper>
+      <>
         <h2>
           <BsTable />
           {activeLanguage === 'PT'
@@ -160,7 +175,11 @@ export default function StatisticsCarousel({
             <span>{titleInformation.statistics.teamsQuantity}</span>
           </div>
           <div>
-            <p>{activeLanguage === 'PT' ? 'Período' : 'Period'}</p>
+            <p>
+              {activeLanguage === 'PT'
+                ? 'Período do Torneio'
+                : 'Championship Period'}
+            </p>
             <div>
               <span>{startingChampionshipDateString}</span>
               <p>-</p>
@@ -172,7 +191,7 @@ export default function StatisticsCarousel({
             <span>{titleInformation.statistics.avarageGoals}</span>
           </div>
         </StatisticsWrapper>
-      </SliderWrapper>
+      </>
     )
   }
 
@@ -191,7 +210,7 @@ export default function StatisticsCarousel({
     )
 
     return (
-      <SliderWrapper>
+      <>
         <h2>
           <BsShield />
           {activeLanguage === 'PT'
@@ -228,7 +247,7 @@ export default function StatisticsCarousel({
             <span>{flamengoAvarageGoalsAgainst}</span>
           </div>
         </StatisticsWrapper>
-      </SliderWrapper>
+      </>
     )
   }
 
@@ -266,7 +285,9 @@ export default function StatisticsCarousel({
         )}
       >
         {slides.map((slide) => (
-          <Slide key={slide.key}>{slide}</Slide>
+          <SlideScheme key={slide.key} slideNumber={slide.key!}>
+            {slide}
+          </SlideScheme>
         ))}
       </CarouselContainer>
     </StatisticsCarouselContainer>

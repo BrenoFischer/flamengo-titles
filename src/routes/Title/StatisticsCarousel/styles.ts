@@ -16,9 +16,18 @@ export const Slide = styled.li`
   width: 80%;
   margin: 1rem auto;
   list-style: none;
+  position: relative;
 `
 
-export const SliderWrapper = styled.div`
+export const SlideNumberWrapper = styled.div`
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+
+  font-size: 1.6rem;
+`
+
+export const SlideWrapper = styled.div`
   border: 4px solid red;
   outline: 4px solid black;
   padding: 2rem 4rem;
