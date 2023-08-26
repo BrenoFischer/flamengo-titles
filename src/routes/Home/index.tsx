@@ -1,5 +1,6 @@
 import AllTitles from '../../components/AllTitles'
 import Header from '../../components/Header'
+import ChronologicalCarousel from './ChronologicalCarousel'
 // import { saveNewChampionship } from '../../utils/firebase/firebase'
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <>
       <Header />
+      <ChronologicalCarousel />
       {/* <button onClick={handleAddNewSquad}>Add squad</button> */}
       <AllTitles />
     </>
