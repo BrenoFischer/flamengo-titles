@@ -1,3 +1,5 @@
+import { Timestamp } from 'firebase/firestore'
+
 interface PlayerType {
   name: string
   number: string
@@ -69,7 +71,7 @@ export interface TitleInformation {
   finalRanking: FinalRanking
   statistics: {
     teamsQuantity: string
-    period: { from: Date; to: Date }
+    period: { from: Timestamp; to: Timestamp }
     avarageGoals: string
     flamengo: {
       defeats: string
