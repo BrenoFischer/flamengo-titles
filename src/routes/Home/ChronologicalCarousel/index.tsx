@@ -42,7 +42,7 @@ function SlideArrow({
 }
 
 export default function ChronologicalCarousel() {
-  // const isLaptop = useMediaQuery({ query: '(max-width: 1200px)' })
+  const isLaptop = useMediaQuery({ query: '(max-width: 1200px)' })
   // const isBigScreen = useMediaQuery({ query: '(min-width: 1800px)' })
   const isPhone = useMediaQuery({ query: '(max-width: 600px)' })
   const isTablet = useMediaQuery({ query: '(max-width: 800px)' })
@@ -124,7 +124,7 @@ export default function ChronologicalCarousel() {
   return (
     <ChronologicalCarouselContainer>
       <Carousel
-        slidesToShow={isPhone ? 2 : isTablet ? 3 : 6}
+        slidesToShow={isPhone ? 2 : isTablet ? 3 : isLaptop ? 4 : 6}
         slidesToScroll={2}
         renderBottomCenterControls={() => null}
         // dragging={false}

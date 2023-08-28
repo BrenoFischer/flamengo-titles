@@ -5,7 +5,7 @@ import { devices } from '../../../styles/mixins'
 export const ChronologicalCarouselContainer = styled.div`
   margin: 10rem 7rem 0 7rem;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     margin: 10rem 3rem 0 3rem;
   }
 `
@@ -25,7 +25,7 @@ export const SlideArrowContainer = styled.button<SlideArrowContainerProps>`
   margin-left: ${(props) => (props.rightArrow ? 0 : '-4rem')};
   margin-right: ${(props) => (props.rightArrow ? '-4rem' : 0)};
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     margin-left: ${(props) => (props.rightArrow ? 0 : '-2rem')};
     margin-right: ${(props) => (props.rightArrow ? '-2rem' : 0)};
   }
