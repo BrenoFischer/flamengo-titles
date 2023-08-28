@@ -19,6 +19,7 @@ import { AiFillStar } from 'react-icons/ai'
 import { HiArrowLeft, HiArrowRight } from 'react-icons/hi'
 import { BiLinkExternal } from 'react-icons/bi'
 import { slides } from './carouselSlides'
+import { useMediaQuery } from 'react-responsive'
 
 interface SlideArrowProps {
   handleOnClick: React.MouseEventHandler<HTMLButtonElement>
@@ -41,6 +42,11 @@ function SlideArrow({
 }
 
 export default function ChronologicalCarousel() {
+  // const isLaptop = useMediaQuery({ query: '(max-width: 1200px)' })
+  // const isBigScreen = useMediaQuery({ query: '(min-width: 1800px)' })
+  const isPhone = useMediaQuery({ query: '(max-width: 600px)' })
+  // const isTablet = useMediaQuery({ query: '(max-width: 800px)' })
+
   interface SlideProps {
     year: string
     category: string
@@ -118,7 +124,7 @@ export default function ChronologicalCarousel() {
   return (
     <ChronologicalCarouselContainer>
       <Carousel
-        slidesToShow={6}
+        slidesToShow={isPhone ? 2 : 6}
         slidesToScroll={2}
         renderBottomCenterControls={() => null}
         // dragging={false}
@@ -128,7 +134,7 @@ export default function ChronologicalCarousel() {
             rightArrow={false}
             handleOnClick={previousSlide}
             buttonDisabled={previousDisabled}
-            arrowIcon={<HiArrowLeft size={40} />}
+            arrowIcon={<HiArrowLeft size={isPhone ? 20 : 40} />}
           />
         )}
         renderCenterRightControls={({ nextSlide, nextDisabled }) => (
@@ -136,7 +142,7 @@ export default function ChronologicalCarousel() {
             rightArrow={true}
             handleOnClick={nextSlide}
             buttonDisabled={nextDisabled}
-            arrowIcon={<HiArrowRight size={40} />}
+            arrowIcon={<HiArrowRight size={isPhone ? 20 : 40} />}
           />
         )}
       >

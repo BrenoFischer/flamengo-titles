@@ -1,8 +1,13 @@
 import { styled } from 'styled-components'
 import { Link } from 'react-router-dom'
+import { devices } from '../../../styles/mixins'
 
 export const ChronologicalCarouselContainer = styled.div`
   margin: 10rem 7rem 0 7rem;
+
+  @media ${devices.phone} {
+    margin: 10rem 3rem 0 3rem;
+  }
 `
 
 export const SlideContainer = styled.div`
@@ -19,6 +24,11 @@ export const SlideArrowContainer = styled.button<SlideArrowContainerProps>`
   color: ${(props) => props.theme.red};
   margin-left: ${(props) => (props.rightArrow ? 0 : '-4rem')};
   margin-right: ${(props) => (props.rightArrow ? '-4rem' : 0)};
+
+  @media ${devices.phone} {
+    margin-left: ${(props) => (props.rightArrow ? 0 : '-2rem')};
+    margin-right: ${(props) => (props.rightArrow ? '-2rem' : 0)};
+  }
 `
 
 export const SlideWrapper = styled(Link)`
