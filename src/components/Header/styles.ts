@@ -1,4 +1,5 @@
 import { styled } from 'styled-components'
+import { devices } from '../../styles/mixins'
 
 export const UpperHeader = styled.div`
   background: transparent;
@@ -10,11 +11,6 @@ export const UpperHeader = styled.div`
   align-items: center;
 
   position: relative;
-
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: ${(props) => props.theme.black};
-  text-transform: uppercase;
 
   transition: all 0.2 ease-out;
 
@@ -75,5 +71,9 @@ export const CoverHeader = styled.div<CoverHeaderProps>`
     font-size: 3.5rem;
     letter-spacing: 3px;
     text-shadow: 4px 4px 20px #000;
+
+    @media ${devices.tablet} {
+      font-size: 3.2rem;
+    }
   }
 `
