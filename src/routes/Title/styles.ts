@@ -5,6 +5,14 @@ export const TitleContainer = styled.div`
   main {
     padding: 0 10rem 10rem;
 
+    @media ${devices.laptop} {
+      padding: 0 5rem 5rem;
+    }
+
+    @media ${devices.tablet} {
+      padding: 0 4rem 4rem;
+    }
+
     @media ${devices.phone} {
       padding: 0 2rem 2rem;
     }
@@ -53,11 +61,7 @@ export const ResumeContainer = styled(SectionLayout)`
 
 export const WinningSquadPhotoContainer = styled.div`
   img {
-    max-width: 60rem;
-
-    @media ${devices.phone} {
-      max-width: 33rem;
-    }
+    max-width: 95%;
   }
 `
 

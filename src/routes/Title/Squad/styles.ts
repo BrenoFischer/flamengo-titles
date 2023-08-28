@@ -59,7 +59,11 @@ export const SquadInformationContainer = styled.div`
   display: flex;
   gap: 20rem;
 
-  @media ${devices.phone} {
+  @media ${devices.laptop} {
+    gap: 5%;
+  }
+
+  @media ${devices.tablet} {
     flex-direction: column;
     gap: 5rem;
   }
@@ -72,7 +76,7 @@ export const FootballFieldWrapper = styled.div`
   img {
     max-height: 35rem;
 
-    @media ${devices.phone} {
+    @media ${devices.tablet} {
       min-width: 100%;
     }
   }

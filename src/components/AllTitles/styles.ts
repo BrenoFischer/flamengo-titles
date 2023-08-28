@@ -17,6 +17,14 @@ export const AllTitlesContainer = styled.main`
     background-color: ${(props) => props.theme.white};
     padding: 4rem 10rem;
 
+    @media ${devices.laptop} {
+      padding: 2rem 7rem;
+    }
+
+    @media ${devices.tablet} {
+      padding: 2rem 5rem;
+    }
+
     @media ${devices.phone} {
       padding: 2rem 4rem;
     }

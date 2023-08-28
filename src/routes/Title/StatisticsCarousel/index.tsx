@@ -18,6 +18,7 @@ import { TitleSectionHeader } from '..'
 import { LanguageContext } from '../../../contexts/LanguageContext'
 import { TitleInformation } from '../utils/titleInformationScheme'
 import { PieChart } from 'react-minimal-pie-chart'
+import { useMediaQuery } from 'react-responsive'
 
 interface SlideArrowProps {
   handleOnClick: React.MouseEventHandler<HTMLButtonElement>
@@ -40,6 +41,11 @@ export default function StatisticsCarousel({
   titleInformation,
 }: StatisticsCarouselProps) {
   const { activeLanguage } = useContext(LanguageContext)
+
+  // const isLaptop = useMediaQuery({ query: '(max-width: 1200px)' })
+  // const isBigScreen = useMediaQuery({ query: '(min-width: 1800px)' })
+  const isPhone = useMediaQuery({ query: '(max-width: 600px)' })
+  // const isTablet = useMediaQuery({ query: '(max-width: 800px)' })
 
   interface SlideSchemeProps {
     children: React.ReactNode
@@ -274,13 +280,13 @@ export default function StatisticsCarousel({
         renderCenterLeftControls={({ previousSlide }) => (
           <SlideArrow
             handleOnClick={previousSlide}
-            arrowIcon={<HiArrowLeft size={40} />}
+            arrowIcon={<HiArrowLeft size={isPhone ? 20 : 40} />}
           />
         )}
         renderCenterRightControls={({ nextSlide }) => (
           <SlideArrow
             handleOnClick={nextSlide}
-            arrowIcon={<HiArrowRight size={40} />}
+            arrowIcon={<HiArrowRight size={isPhone ? 20 : 40} />}
           />
         )}
       >

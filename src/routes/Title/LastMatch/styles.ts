@@ -8,7 +8,7 @@ export const LastMatchContainer = styled(SectionLayout)`
     align-items: center;
     gap: 0.5rem;
 
-    @media ${devices.phone} {
+    @media ${devices.laptop} {
       justify-content: center;
     }
   }
@@ -35,7 +35,7 @@ export const StadiumContainer = styled.div`
   display: flex;
   align-items: center;
 
-  @media ${devices.phone} {
+  @media ${devices.laptop} {
     flex-direction: column;
   }
 
