@@ -87,6 +87,10 @@ export const IconsContainer = styled.div`
   position: relative;
 `
 
+export const SuperStarWrapper = styled.div`
+  color: ${(props) => props.theme.red};
+`
+
 export const LinkIconContainer = styled.div`
   position: absolute;
   right: 2rem;
@@ -98,6 +102,7 @@ export const ChronologicalLine = styled.div`
   position: relative;
   display: flex;
 `
+
 interface LeftLineProps {
   firstSlide: boolean
 }
@@ -130,4 +135,13 @@ export const ChronologicalDot = styled.div`
   width: 10px;
   border-radius: 50%;
   z-index: 100;
+`
+
+export const DecadeContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+
+  font-size: 1.5rem;
+  font-weight: 600;
 `
