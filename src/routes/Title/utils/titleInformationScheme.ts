@@ -130,7 +130,7 @@ export const titleInformationScheme = {
   roundRobin: false,
   statistics: {
     teamsQuantity: '',
-    period: { from: new Date(), to: new Date() },
+    period: { from: new Timestamp(0, 0), to: new Timestamp(0, 0) },
     avarageGoals: '',
     flamengo: {
       defeats: '',
