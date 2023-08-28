@@ -1,5 +1,6 @@
 import Carousel from 'nuka-carousel'
 import {
+  CategoryColorIndicator,
   ChronologicalCarouselContainer,
   ChronologicalDot,
   ChronologicalLine,
@@ -59,6 +60,17 @@ export default function ChronologicalCarousel() {
     hasLink,
     firstOfDecade,
   }: SlideProps) {
+    const categoryToColorMap = new Map<string, string>([
+      ['Carioca', '#3944BC'],
+      ['Libertadores', '#DA9100'],
+      ['Brasileiro', '#228B22'],
+      ['CopaDoBrasil', '#0492C2'],
+      ['Mercosul', '#592693'],
+      ['Mundial', '#FFD700'],
+    ])
+
+    const categoryColor = categoryToColorMap.get(category)
+
     return (
       <SlideContainer>
         <IconsContainer>
@@ -77,12 +89,18 @@ export default function ChronologicalCarousel() {
         {hasLink ? (
           <SlideWrapper to={`title/${category}/${year}`}>
             <p>{year}</p>
-            <span>{category}</span>
+            <span>
+              <CategoryColorIndicator color={categoryColor!} />
+              {category}
+            </span>
           </SlideWrapper>
         ) : (
           <SliderWrapperNotClickable>
             <p>{year}</p>
-            <span>{category}</span>
+            <span>
+              <CategoryColorIndicator color={categoryColor!} />
+              {category}
+            </span>
           </SliderWrapperNotClickable>
         )}
         <ChronologicalLine>

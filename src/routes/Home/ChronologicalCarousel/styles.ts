@@ -44,12 +44,26 @@ export const SlideWrapper = styled(Link)`
   span {
     font-size: 2rem;
     color: ${(props) => props.theme.red};
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   &:hover {
     filter: brightness(120%);
     transform: scale(120%);
   }
+`
+
+interface CategoryColorIndicatorProps {
+  color: string
+}
+
+export const CategoryColorIndicator = styled.div<CategoryColorIndicatorProps>`
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 50%;
+  background-color: ${(props) => props.color};
 `
 
 export const SliderWrapperNotClickable = styled.li`
@@ -70,6 +84,9 @@ export const SliderWrapperNotClickable = styled.li`
   span {
     font-size: 2rem;
     color: ${(props) => props.theme.red};
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   &:hover {
