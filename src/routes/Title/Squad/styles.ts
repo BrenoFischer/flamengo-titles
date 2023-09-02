@@ -127,7 +127,7 @@ export const PlayerOnField = styled.div<PlayersOnFieldProps>`
   border: 3px solid ${(props) => props.theme.red};
   outline: 3px solid ${(props) => props.theme.black};
 
-  overflow: hidden;
+  /* overflow: hidden; */
 
   transform: translate(-50%, -50%);
 

@@ -56,7 +56,7 @@ export default function AllTitles() {
     { year: '1996', disabledLink: true },
     { year: '1999', disabledLink: true },
     { year: '2000', disabledLink: true },
-    { year: '2001', disabledLink: true },
+    { year: '2001', disabledLink: false },
     { year: '2004', disabledLink: true },
     { year: '2007', disabledLink: true },
     { year: '2008', disabledLink: true },

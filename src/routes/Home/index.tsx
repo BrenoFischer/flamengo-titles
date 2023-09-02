@@ -5,7 +5,7 @@ import ChronologicalCarousel from './ChronologicalCarousel'
 
 export default function Home() {
   // async function handleAddNewSquad() {
-  //   await saveNewChampionship('brasileiro')
+  //   await saveNewChampionship('carioca')
   // }
 
   return (

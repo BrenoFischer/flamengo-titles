@@ -413,7 +413,7 @@ export const slides = [
     star: true,
     superStar: true,
     slideNumber: 35,
-    hasLink: false,
+    hasLink: true,
     firstOfDecade: {
       first: false,
       decade: '00s',
