@@ -93,6 +93,18 @@ export interface TitleInformation {
     coach: { name: string; country: string }
     players: WinningSquadPlayers
   }
+  highlightPlayer: {
+    hasHighlightPlayer: boolean
+    photo: string
+    player: {
+      name: string
+      country: string
+      position: {
+        pt: string
+        en: string
+      }
+    }
+  }
 }
 
 export const titleInformationScheme = {
@@ -162,6 +174,18 @@ export const titleInformationScheme = {
       9: { name: '', nationality: '', number: '' },
       10: { name: '', nationality: '', number: '' },
       11: { name: '', nationality: '', number: '' },
+    },
+  },
+  highlightPlayer: {
+    hasHighlightPlayer: false,
+    photo: '',
+    player: {
+      name: '',
+      country: '',
+      position: {
+        pt: '',
+        en: '',
+      },
     },
   },
 }

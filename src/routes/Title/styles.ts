@@ -66,6 +66,8 @@ export const WinningSquadPhotoContainer = styled.div`
 `
 
 export const FinalRankingContainer = styled.div`
+  margin-bottom: 10rem;
+
   table {
     border-collapse: collapse;
     min-width: 300px;
@@ -122,4 +124,34 @@ export const FinalRankingContainer = styled.div`
       padding-right: 1.5rem;
     }
   }
+`
+
+export const HighlightPlayerContainer = styled.div`
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > div {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
+    color: ${(props) => props.theme.red};
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+  }
+
+  span {
+    color: ${(props) => props.theme.black};
+  }
+`
+
+export const HighlightPlayerPhoto = styled.img`
+  margin-bottom: 1rem;
+  max-height: 30rem;
+  max-width: 40rem;
+  filter: drop-shadow(rgba(18, 30, 39, 0.6) 6px 6px);
 `

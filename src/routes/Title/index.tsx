@@ -16,6 +16,8 @@ import {
 
 import {
   FinalRankingContainer,
+  HighlightPlayerContainer,
+  HighlightPlayerPhoto,
   ResumeContainer,
   TitleContainer,
   TitleSectionH2,
@@ -24,6 +26,7 @@ import {
 import LoadingTitleContent from './LoadingTitleContent'
 import GoToTop from '../../utils/auxiliaryFunctions/goToTop'
 import StatisticsCarousel from './StatisticsCarousel'
+import ReactCountryFlag from 'react-country-flag'
 
 interface TitleSectionHeaderProps {
   ptText: string
@@ -171,6 +174,41 @@ export default function Title() {
                     </tbody>
                   </table>
                 </FinalRankingContainer>
+              </>
+            )}
+
+            {titleInformation.highlightPlayer.hasHighlightPlayer && (
+              <>
+                <TitleSectionHeader
+                  ptText="Destaque do Flamengo"
+                  enText="Flamengo Highlight"
+                  activeLanguage={activeLanguage}
+                />
+                <HighlightPlayerContainer>
+                  <HighlightPlayerPhoto
+                    src={titleInformation.highlightPlayer.photo}
+                    alt={titleInformation.highlightPlayer.player.name}
+                  />
+                  <div>
+                    <p>
+                      {' '}
+                      <ReactCountryFlag
+                        svg
+                        countryCode={
+                          titleInformation.highlightPlayer.player.country
+                        }
+                        style={{ width: '2rem' }}
+                      />
+                    </p>
+                    <p>{titleInformation.highlightPlayer.player.name}</p>
+                    <span>
+                      -{' '}
+                      {activeLanguage === 'PT'
+                        ? titleInformation.highlightPlayer.player.position.pt
+                        : titleInformation.highlightPlayer.player.position.en}
+                    </span>
+                  </div>
+                </HighlightPlayerContainer>
               </>
             )}
 

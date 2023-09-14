@@ -255,6 +255,19 @@ export const saveNewChampionship = async (category: string) => {
           },
         },
       },
+      highlighPlayer: {
+        hasHighlightPlayer: false,
+        photo:
+          'https://firebasestorage.googleapis.com/v0/b/flamengo-26a20.appspot.com/o/best-player-libertadores-2019.png?alt=media&token=3cdc0415-86b7-41b3-a15e-c56fa2b04613',
+        player: {
+          name: 'Gabriel Barbosa',
+          country: 'BR',
+          position: {
+            pt: 'Atacante',
+            en: 'Striker',
+          },
+        },
+      },
     },
   }
 
