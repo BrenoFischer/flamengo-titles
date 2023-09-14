@@ -38,4 +38,4 @@ There is a lack on the internet of a centralized space to explore Flamengo's glo
 To contact me and for more projects:
 
 - Portfolio: [https://breno-perricone.netlify.app/](https://breno-perricone.netlify.app/)
-- Linkedin: [www.linkedin.com/in/breno-perricone-fischer-191964129](www.linkedin.com/in/breno-perricone-fischer-191964129)
+- Linkedin: [www.linkedin.com/in/brenoperricone/](www.linkedin.com/in/brenoperricone/)
