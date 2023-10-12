@@ -33,8 +33,4 @@ export const GlobalStyle = createGlobalStyle`
     body, input, textarea, button {
         font: 400 1rem Titillium Web, sans-serif;
     }
-
-    button {
-        all: unset;
-    }
 `

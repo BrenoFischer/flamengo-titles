@@ -1,5 +1,6 @@
 import * as Checkbox from '@radix-ui/react-checkbox'
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
 export const CarouselFiltersContainer = styled.div`
   margin-bottom: 1rem;
@@ -8,20 +9,23 @@ export const CarouselFiltersContainer = styled.div`
   ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.5rem;
     margin-top: 2rem;
   }
 `
 
 interface FilterItemProps {
   isFiltered: boolean
+  isDisabled: boolean
 }
 
-export const FilterItemContainer = styled.li<FilterItemProps>`
+export const FilterItemContainer = styled(motion.li)<FilterItemProps>`
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.8rem;
   height: 2rem;
+
+  cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};
 
   border: ${(props) =>
     props.isFiltered
@@ -32,11 +36,9 @@ export const FilterItemContainer = styled.li<FilterItemProps>`
   line-height: 0;
   list-style: none;
   padding-left: 0.5rem;
-  background-color: ${(props) =>
-    props.isFiltered ? props.theme.white : props.theme.gray};
+  background-color: ${(props) => props.theme.white};
 
-  color: ${(props) =>
-    props.isFiltered ? props.theme.black : props.theme.darkGray};
+  color: ${(props) => props.theme.black};
 
   svg {
     cursor: pointer;
@@ -62,8 +64,7 @@ export const CheckboxContainer = styled(Checkbox.Root)`
 
   border: none;
   border-left: 2px solid ${(props) => props.theme.black};
-  background-color: ${(props) =>
-    props.checked ? props.theme.white : props.theme.gray};
+  background-color: ${(props) => props.theme.white};
   width: 25px;
   height: 100%;
 
