@@ -1,49 +1,61 @@
-import { useContext } from 'react'
-import { AiOutlineClose } from 'react-icons/ai'
-import { IoMdAdd } from 'react-icons/io'
+import { useContext, useState } from 'react'
 
-import { CarouselFiltersContainer, FilterItem } from './styles'
+import {
+  CarouselFiltersContainer,
+  CategoryColorIndicator,
+  CheckboxContainer,
+  CheckboxIndicator,
+  FilterItemContainer,
+} from './styles'
 import { CarouselFiltersContext } from '../../../../contexts/CarouselFilterContext'
 import { categoryToColorMap } from '..'
+import { CheckIcon } from '@radix-ui/react-icons'
+
+function FilterItem({ filter }: { filter: string }) {
+  const { activeFilters, excludeFilter, addFilter } = useContext(
+    CarouselFiltersContext,
+  )
+  const [checked, setChecked] = useState(true)
+
+  function handleOnClick() {
+    if (checked) excludeFilter(filter)
+    else addFilter(filter)
+  }
+
+  return (
+    <FilterItemContainer isFiltered={checked}>
+      <CategoryColorIndicator categoryColor={categoryToColorMap.get(filter)} />
+      {filter}
+      <CheckboxContainer
+        defaultChecked
+        checked={checked}
+        disabled={activeFilters.length === 1 && checked}
+        onCheckedChange={setChecked}
+        onClick={handleOnClick}
+      >
+        <CheckboxIndicator>
+          <CheckIcon />
+        </CheckboxIndicator>
+      </CheckboxContainer>
+    </FilterItemContainer>
+  )
+}
 
 export default function CarouselFilters() {
-  const { activeFilters, inactiveFilters, excludeFilter, addFilter } =
-    useContext(CarouselFiltersContext)
-
-  function handleExcludeFilter(filter: string) {
-    excludeFilter(filter)
-  }
-
-  function handleAddFilter(filter: string) {
-    addFilter(filter)
-  }
+  const allCategories = [
+    'Brasileiro',
+    'Carioca',
+    'CopaDoBrasil',
+    'Libertadores',
+    'Mercosul',
+    'Mundial',
+  ]
 
   return (
     <CarouselFiltersContainer>
       <ul>
-        {activeFilters.map((filter) => (
-          <FilterItem
-            key={filter}
-            categoryColor={categoryToColorMap.get(filter)}
-            isFiltered={true}
-          >
-            <div />
-            {filter}{' '}
-            <AiOutlineClose onClick={() => handleExcludeFilter(filter)} />
-          </FilterItem>
-        ))}
-      </ul>
-
-      <ul>
-        {inactiveFilters.map((filter) => (
-          <FilterItem
-            key={filter}
-            categoryColor={categoryToColorMap.get(filter)}
-            isFiltered={false}
-          >
-            <div />
-            {filter} <IoMdAdd onClick={() => handleAddFilter(filter)} />
-          </FilterItem>
+        {allCategories.map((filter) => (
+          <FilterItem key={filter} filter={filter} />
         ))}
       </ul>
     </CarouselFiltersContainer>
