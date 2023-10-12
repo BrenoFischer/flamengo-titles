@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
 export const CarouselFiltersContainer = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   margin-left: 4rem;
 
   ul {
