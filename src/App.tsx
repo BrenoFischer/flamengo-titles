@@ -6,17 +6,20 @@ import Home from './routes/Home'
 import Title from './routes/Title'
 import { LanguageContextProvider } from './contexts/LanguageContext'
 import NotFound from './routes/NotFound'
+import { CarouselFiltersContextProvider } from './contexts/CarouselFilterContext'
 
 export default function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
       <LanguageContextProvider>
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="title/:category/:year" element={<Title />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <CarouselFiltersContextProvider>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="title/:category/:year" element={<Title />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </CarouselFiltersContextProvider>
       </LanguageContextProvider>
     </ThemeProvider>
   )

@@ -1,3 +1,16 @@
+export interface SlideType {
+  year: string
+  category: string
+  star: boolean
+  superStar: boolean
+  slideNumber: number
+  hasLink: boolean
+  firstOfDecade: {
+    first: boolean
+    decade: string
+  }
+}
+
 export const slides = [
   {
     year: '1914',
