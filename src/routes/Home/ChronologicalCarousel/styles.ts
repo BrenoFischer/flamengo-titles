@@ -93,7 +93,7 @@ export const SliderWrapperNotClickable = styled.li`
 
   span {
     font-size: 2rem;
-    color: ${(props) => props.theme.red};
+    color: ${(props) => props.theme.black};
     display: flex;
     align-items: center;
     gap: 0.5rem;

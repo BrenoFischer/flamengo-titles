@@ -1,5 +1,16 @@
 import { useContext } from 'react'
+
+import { AiFillStar } from 'react-icons/ai'
+import { HiArrowLeft, HiArrowRight } from 'react-icons/hi'
+import { BiLinkExternal } from 'react-icons/bi'
+import { useMediaQuery } from 'react-responsive'
+
 import Carousel from 'nuka-carousel'
+
+import CarouselFilters from './CarouselFilters'
+import { SlideType, slides } from './carouselSlides'
+import { CarouselFiltersContext } from '../../../contexts/CarouselFilterContext'
+
 import {
   CategoryColorIndicator,
   ChronologicalCarouselContainer,
@@ -16,13 +27,6 @@ import {
   SliderWrapperNotClickable,
   SuperStarWrapper,
 } from './styles'
-import { AiFillStar } from 'react-icons/ai'
-import { HiArrowLeft, HiArrowRight } from 'react-icons/hi'
-import { BiLinkExternal } from 'react-icons/bi'
-import { SlideType, slides } from './carouselSlides'
-import { useMediaQuery } from 'react-responsive'
-import CarouselFilters from './CarouselFilters'
-import { CarouselFiltersContext } from '../../../contexts/CarouselFilterContext'
 
 interface SlideArrowProps {
   handleOnClick: React.MouseEventHandler<HTMLButtonElement>

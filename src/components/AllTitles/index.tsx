@@ -1,5 +1,9 @@
+import BackgroundImageParallax from '../BackgroundImageParallax'
 import TitleCategory from '../TitleCategory'
 import { AllTitlesContainer } from './styles'
+import ZicoPhoto from '../../assets/best-players/best-player-libertadores-1981.png'
+import AdrianoPhoto from '../../assets/best-players/best-player-brasileiro-2009.png'
+import GabiPhoto from '../../assets/best-players/best-player-libertadores-2019.png'
 
 export default function AllTitles() {
   const libertadoresTitles = [
@@ -44,7 +48,7 @@ export default function AllTitles() {
     { year: '1954', disabledLink: true },
     { year: '1955', disabledLink: true },
     { year: '1963', disabledLink: true },
-    { year: '1965', disabledLink: true },
+    { year: '190', disabledLink: true },
     { year: '1972', disabledLink: true },
     { year: '1974', disabledLink: true },
     { year: '1978', disabledLink: true },
@@ -71,9 +75,27 @@ export default function AllTitles() {
 
   return (
     <AllTitlesContainer>
+      <BackgroundImageParallax
+        image={ZicoPhoto}
+        speed={['0%', '200%']}
+        right={'50%'}
+        top={'0'}
+      />
       <ul>
         <TitleCategory category="Libertadores" titles={libertadoresTitles} />
+        <BackgroundImageParallax
+          image={AdrianoPhoto}
+          speed={['0%', '150%']}
+          top={'0'}
+          right="-10rem"
+        />
         <TitleCategory category="Mundial" titles={worldTitles} />
+        <BackgroundImageParallax
+          image={GabiPhoto}
+          speed={['0%', '150%']}
+          top={'0'}
+          right="40%"
+        />
         <TitleCategory category="Brasileiro" titles={brasileiroTitles} />
         <TitleCategory category="Copa Do Brasil" titles={copaDoBrasilTitles} />
         <TitleCategory category="Mercosul" titles={mercosulTitles} />

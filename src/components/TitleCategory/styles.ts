@@ -42,6 +42,7 @@ export const TitleCategoryContainer = styled.li`
 
 export const EnabledLink = styled.p`
   border: 2px solid ${(props) => props.theme.black};
+  background-color: ${(props) => props.theme.white};
   cursor: pointer;
 
   transition: all 0.1s ease-out;

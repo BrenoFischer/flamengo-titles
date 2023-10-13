@@ -1,14 +1,17 @@
+import { useContext } from 'react'
+
+import ReactCountryFlag from 'react-country-flag'
+
+import FlamengoLogo from '../../assets/flamengo.png'
+import CoverPhoto from '../../assets/cover.jpg'
+import { LanguageContext } from '../../contexts/LanguageContext'
+
 import {
   CoverHeader,
   LanguageSelectorContainer,
   LowerHeader,
   UpperHeader,
 } from './styles'
-import FlamengoLogo from '../../assets/flamengo.png'
-import { LanguageContext } from '../../contexts/LanguageContext'
-import ReactCountryFlag from 'react-country-flag'
-import CoverPhoto from '../../assets/cover.jpg'
-import { useContext } from 'react'
 
 export default function Header() {
   const { activeLanguage, changeActiveLanguage } = useContext(LanguageContext)

@@ -3,6 +3,7 @@ import { devices } from '../../styles/mixins'
 
 export const AllTitlesContainer = styled.main`
   margin-top: 5rem;
+  background: transparent;
 
   h1 {
     padding: 0 10rem;
@@ -14,7 +15,7 @@ export const AllTitlesContainer = styled.main`
   }
 
   ul {
-    background-color: ${(props) => props.theme.white};
+    background-color: transparent;
     padding: 4rem 10rem;
 
     @media ${devices.laptop} {
