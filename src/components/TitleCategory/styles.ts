@@ -45,17 +45,20 @@ export const EnabledLink = styled.p`
   background-color: ${(props) => props.theme.white};
   cursor: pointer;
 
-  transition: all 0.1s ease-out;
+  transition: all 0.2s ease-out;
 
   &:hover {
     background-color: ${(props) => props.theme.red};
     color: ${(props) => props.theme.white};
     border: 2px solid ${(props) => props.theme.red};
+    box-shadow: 4px 4px 0px 1px gray;
+    transform: translate(-4px, -4px);
   }
 `
 
 export const DisabledLink = styled.p`
   border: 2px solid ${(props) => props.theme.darkGray};
+  background-color: ${(props) => props.theme.white};
   color: ${(props) => props.theme.darkGray};
   cursor: not-allowed;
 `
