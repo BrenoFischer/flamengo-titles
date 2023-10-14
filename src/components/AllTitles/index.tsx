@@ -1,8 +1,7 @@
 import BackgroundImageParallax from '../BackgroundImageParallax'
 import TitleCategory from '../TitleCategory'
 import { AllTitlesContainer } from './styles'
-import ZicoPhoto from '../../assets/best-players/best-player-libertadores-1981.png'
-import AdrianoPhoto from '../../assets/best-players/best-player-brasileiro-2009.png'
+import ArrascaetaPhoto from '../../assets/best-players/best-player-copaDoBrasil-2022.png'
 import GabiPhoto from '../../assets/best-players/best-player-libertadores-2019.png'
 
 export default function AllTitles() {
@@ -76,25 +75,19 @@ export default function AllTitles() {
   return (
     <AllTitlesContainer>
       <BackgroundImageParallax
-        image={ZicoPhoto}
+        image={GabiPhoto}
         speed={['0%', '200%']}
         right={'50%'}
         top={'0'}
       />
       <ul>
         <TitleCategory category="Libertadores" titles={libertadoresTitles} />
-        <BackgroundImageParallax
-          image={AdrianoPhoto}
-          speed={['0%', '150%']}
-          top={'0'}
-          right="-10rem"
-        />
         <TitleCategory category="Mundial" titles={worldTitles} />
         <BackgroundImageParallax
-          image={GabiPhoto}
-          speed={['0%', '150%']}
-          top={'0'}
-          right="40%"
+          image={ArrascaetaPhoto}
+          speed={['0%', '300%']}
+          top={'0rem'}
+          right="0"
         />
         <TitleCategory category="Brasileiro" titles={brasileiroTitles} />
         <TitleCategory category="Copa Do Brasil" titles={copaDoBrasilTitles} />

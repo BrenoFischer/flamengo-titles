@@ -50,7 +50,7 @@ export const EnabledLink = styled.p`
   &:hover {
     background-color: ${(props) => props.theme.red};
     color: ${(props) => props.theme.white};
-    border: 2px solid ${(props) => props.theme.red};
+    border: 2px solid ${(props) => props.theme.black};
     box-shadow: 4px 4px 0px 1px gray;
     transform: translate(-4px, -4px);
   }

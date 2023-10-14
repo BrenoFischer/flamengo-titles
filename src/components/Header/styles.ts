@@ -53,8 +53,11 @@ export const CoverHeader = styled.div<CoverHeaderProps>`
       rgba(255, 255, 255, 0.1)
     ),
     url(${(props) => props.coverPhoto});
-  background-size: cover;
+
+  background-attachment: fixed;
+  background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
 
   box-shadow: 0 0 15px #000;
 
