@@ -1,82 +1,114 @@
 import { styled } from 'styled-components'
 import { devices } from '../../styles/mixins'
+import CoverPhoto from '../../assets/cover.jpg'
+import PaperBorder from '../../assets/paper-border.png'
 
-export const UpperHeader = styled.div`
-  background: transparent;
-  height: 6rem;
-  width: 100%;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  position: relative;
-
-  transition: all 0.2 ease-out;
-
-  span {
-    color: ${(props) => props.theme.red};
-  }
-
-  img {
-    position: absolute;
-    top: 100%;
-    right: 50%;
-    transform: translate(50%, -50%);
-    height: 10rem;
-    -webkit-filter: drop-shadow(0 0 3px #000);
-    filter: drop-shadow(0 0 3px #000);
-  }
-`
-
-export const LowerHeader = styled.div``
-
-export const LanguageSelectorContainer = styled.div`
-  position: absolute;
-  top: 1rem;
-  right: 2rem;
-  display: flex;
-  gap: 0.5rem;
-`
-
-interface CoverHeaderProps {
-  coverPhoto: string
-}
-
-export const CoverHeader = styled.div<CoverHeaderProps>`
+export const HeaderContainer = styled.header`
   height: 100vh;
-  margin-top: -6rem;
-
+  width: 100%;
+  overflow: hidden;
   background: linear-gradient(
       0deg,
       rgba(0, 0, 0, 0.4),
       rgba(255, 255, 255, 0.1)
     ),
-    url(${(props) => props.coverPhoto});
+    url(${CoverPhoto});
 
-  background-attachment: fixed;
   background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+
+  position: relative;
 
   box-shadow: 0 0 15px #000;
 
-  display: flex;
-  align-items: center;
-  text-align: center;
+  @media ${devices.phone} {
+    background-attachment: scroll;
+  }
 
-  h1 {
-    margin: 10rem 0;
+  > video {
+    position: absolute;
+    top: 16rem;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: calc(50% - 10rem);
+    object-fit: cover;
 
-    padding: 0 6rem;
-    color: ${(props) => props.theme.white};
+    @media ${devices.phone} {
+      height: calc(50% - 20rem);
+    }
+  }
+
+  > h1 {
+    height: calc(50% - 10rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    mix-blend-mode: screen;
+    user-select: none;
+
+    letter-spacing: 20px;
+    color: #000;
+    background-color: ${(props) => props.theme.white};
+    font-family: 'Young serif', sans-serif;
     font-weight: 700;
-    font-size: 3.5rem;
-    letter-spacing: 3px;
-    text-shadow: 4px 4px 20px #000;
+    font-size: 10rem;
 
     @media ${devices.tablet} {
-      font-size: 3.2rem;
+      letter-spacing: 5px;
+      font-size: 6rem;
+      padding: 0 1rem;
     }
+
+    @media ${devices.phone} {
+      height: calc(50% - 20rem);
+      letter-spacing: 5px;
+      font-size: 6rem;
+      padding: 0 1rem;
+    }
+  }
+
+  > h2 {
+    padding: 0 5rem;
+    margin-top: 4rem;
+    color: ${(props) => props.theme.white};
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+
+    -webkit-filter: drop-shadow(0 0 3px #000);
+    filter: drop-shadow(0 0 3px #000);
+  }
+`
+
+interface ScratchProps {
+  bottom?: boolean
+}
+
+export const Scratch = styled.div<ScratchProps>`
+  background-color: transparent;
+  height: 2rem;
+  background-image: url(${PaperBorder});
+  transform: ${(props) => (props.bottom ? 'rotate(0deg)' : 'rotate(180deg)')};
+
+  @media ${devices.phone} {
+    height: 3rem;
+  }
+`
+
+export const LogoContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  img {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    height: 10rem;
+    z-index: 10;
+    -webkit-filter: drop-shadow(0 0 3px #000);
+    filter: drop-shadow(0 0 3px #000);
   }
 `
