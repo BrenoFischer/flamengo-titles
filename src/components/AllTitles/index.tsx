@@ -1,8 +1,11 @@
-import BackgroundImageParallax from '../BackgroundImageParallax'
 import TitleCategory from '../TitleCategory'
 import { AllTitlesContainer } from './styles'
-import ArrascaetaPhoto from '../../assets/best-players/best-player-copaDoBrasil-2022.png'
-import GabiPhoto from '../../assets/best-players/best-player-libertadores-2019.png'
+import Zico from '../../assets/best-players/best-player-libertadores-1981.png'
+import Petkovic from '../../assets/best-players/best-player-carioca-2001.png'
+import Gabigol from '../../assets/best-players/best-player-libertadores-2019.png'
+import Arrascaeta from '../../assets/best-players/best-player-copaDoBrasil-2022.png'
+import Adriano from '../../assets/best-players/best-player-brasileiro-2009.png'
+import Romario from '../../assets/best-players/best-player-mercosul-1999.png'
 
 export default function AllTitles() {
   const libertadoresTitles = [
@@ -74,25 +77,37 @@ export default function AllTitles() {
 
   return (
     <AllTitlesContainer>
-      <BackgroundImageParallax
-        image={GabiPhoto}
-        speed={['0%', '200%']}
-        right={'50%'}
-        top={'0'}
-      />
       <ul>
-        <TitleCategory category="Libertadores" titles={libertadoresTitles} />
-        <TitleCategory category="Mundial" titles={worldTitles} />
-        <BackgroundImageParallax
-          image={ArrascaetaPhoto}
-          speed={['0%', '300%']}
-          top={'0rem'}
-          right="0"
+        <TitleCategory
+          category="Libertadores"
+          titles={libertadoresTitles}
+          playerCategoryPhoto={Gabigol}
         />
-        <TitleCategory category="Brasileiro" titles={brasileiroTitles} />
-        <TitleCategory category="Copa Do Brasil" titles={copaDoBrasilTitles} />
-        <TitleCategory category="Mercosul" titles={mercosulTitles} />
-        <TitleCategory category="Carioca" titles={cariocaTitles} />
+        <TitleCategory
+          category="Mundial"
+          titles={worldTitles}
+          playerCategoryPhoto={Zico}
+        />
+        <TitleCategory
+          category="Brasileiro"
+          titles={brasileiroTitles}
+          playerCategoryPhoto={Adriano}
+        />
+        <TitleCategory
+          category="Copa Do Brasil"
+          titles={copaDoBrasilTitles}
+          playerCategoryPhoto={Arrascaeta}
+        />
+        <TitleCategory
+          category="Mercosul"
+          titles={mercosulTitles}
+          playerCategoryPhoto={Romario}
+        />
+        <TitleCategory
+          category="Carioca"
+          titles={cariocaTitles}
+          playerCategoryPhoto={Petkovic}
+        />
       </ul>
     </AllTitlesContainer>
   )

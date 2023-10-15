@@ -1,5 +1,12 @@
-import { DisabledLink, EnabledLink, TitleCategoryContainer } from './styles'
+import {
+  CategoryImageContainer,
+  DisabledLink,
+  EnabledLink,
+  TitleCategoryContainer,
+  TitlesYearsContainer,
+} from './styles'
 import { Link } from 'react-router-dom'
+import { Scratch } from '../Header/styles'
 
 interface Title {
   year: string
@@ -10,11 +17,13 @@ interface TitleCategoryProps {
   category: string
   titles: Title[]
   logo?: string
+  playerCategoryPhoto: string
 }
 
 export default function TitleCategory({
   category,
   titles,
+  playerCategoryPhoto,
 }: TitleCategoryProps) {
   const quantityOfTitles = titles.length
 
@@ -22,10 +31,11 @@ export default function TitleCategory({
 
   return (
     <TitleCategoryContainer>
+      <Scratch $isBottom={true} />
       <h2>
         {category} <span>({quantityOfTitles})</span>
       </h2>
-      <div>
+      <TitlesYearsContainer>
         {titles.map((title) =>
           title.disabledLink ? (
             <DisabledLink key={title.year}>{title.year}</DisabledLink>
@@ -38,7 +48,11 @@ export default function TitleCategory({
             </Link>
           ),
         )}
-      </div>
+      </TitlesYearsContainer>
+      <CategoryImageContainer>
+        <img src={playerCategoryPhoto} alt="" />
+      </CategoryImageContainer>
+      <Scratch />
     </TitleCategoryContainer>
   )
 }
