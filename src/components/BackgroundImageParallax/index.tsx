@@ -25,7 +25,7 @@ export default function BackgroundImageParallax({
   const imageY = useTransform(scrollYProgress, [0, 1], speed)
 
   return (
-    <BackgroundImageContainer top={top} right={right}>
+    <BackgroundImageContainer $top={top} $right={right}>
       <motion.img
         style={{ y: imageY }}
         src={image}

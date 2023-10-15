@@ -15,19 +15,19 @@ export const SlideContainer = styled.div`
 `
 
 interface SlideArrowContainerProps {
-  rightArrow: boolean
+  $rightArrow: boolean
 }
 
 export const SlideArrowContainer = styled.button<SlideArrowContainerProps>`
   all: unset;
   cursor: pointer;
   color: ${(props) => props.theme.red};
-  margin-left: ${(props) => (props.rightArrow ? 0 : '-4rem')};
-  margin-right: ${(props) => (props.rightArrow ? '-4rem' : 0)};
+  margin-left: ${(props) => (props.$rightArrow ? 0 : '-4rem')};
+  margin-right: ${(props) => (props.$rightArrow ? '-4rem' : 0)};
 
   @media ${devices.laptop} {
-    margin-left: ${(props) => (props.rightArrow ? 0 : '-2rem')};
-    margin-right: ${(props) => (props.rightArrow ? '-2rem' : 0)};
+    margin-left: ${(props) => (props.$rightArrow ? 0 : '-2rem')};
+    margin-right: ${(props) => (props.$rightArrow ? '-2rem' : 0)};
   }
 `
 
@@ -131,25 +131,25 @@ export const ChronologicalLine = styled.div`
 `
 
 interface LeftLineProps {
-  firstSlide: boolean
+  $firstSlide: boolean
 }
 
 export const LeftLine = styled.div<LeftLineProps>`
   width: 50%;
   height: 5px;
   background-color: ${(props) =>
-    props.firstSlide ? 'transparent' : props.theme.black};
+    props.$firstSlide ? 'transparent' : props.theme.black};
 `
 
 interface RightLineProps {
-  lastSlide: boolean
+  $lastSlide: boolean
 }
 
 export const RightLine = styled.div<RightLineProps>`
   width: 50%;
   height: 5px;
   background-color: ${(props) =>
-    props.lastSlide ? 'transparent' : props.theme.black};
+    props.$lastSlide ? 'transparent' : props.theme.black};
 `
 
 export const ChronologicalDot = styled.div`

@@ -49,14 +49,14 @@ export const FilterItemContainer = styled(motion.li)<FilterItemProps>`
 `
 
 interface CategoryColorIndicatorProps {
-  categoryColor: string | undefined
+  color: string | undefined
 }
 
 export const CategoryColorIndicator = styled.div<CategoryColorIndicatorProps>`
   height: 0.5rem;
   width: 0.5rem;
   border-radius: 50%;
-  background-color: ${(props) => props.categoryColor};
+  background-color: ${(props) => props.color};
 `
 
 export const CheckboxContainer = styled(Checkbox.Root)`

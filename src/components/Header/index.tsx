@@ -15,7 +15,7 @@ export default function Header() {
       </video>
       <Scratch />
       <h1>Flamengo</h1>
-      <Scratch bottom={true} />
+      <Scratch $isBottom={true} />
       <h2>
         Conheça as principais glórias do Flamengo ao longo de mais um século de
         história

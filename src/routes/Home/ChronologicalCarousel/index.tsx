@@ -42,7 +42,7 @@ function SlideArrow({
   buttonDisabled,
 }: SlideArrowProps) {
   return (
-    <SlideArrowContainer onClick={handleOnClick} rightArrow={rightArrow}>
+    <SlideArrowContainer onClick={handleOnClick} $rightArrow={rightArrow}>
       {!buttonDisabled && arrowIcon}
     </SlideArrowContainer>
   )
@@ -146,10 +146,10 @@ export default function ChronologicalCarousel() {
         )}
         <ChronologicalLine>
           <LeftLine
-            firstSlide={slideNumber === filteredSlides[0].slideNumber}
+            $firstSlide={slideNumber === filteredSlides[0].slideNumber}
           />
           <RightLine
-            lastSlide={
+            $lastSlide={
               slideNumber ===
               filteredSlides[filteredSlides.length - 1].slideNumber
             }

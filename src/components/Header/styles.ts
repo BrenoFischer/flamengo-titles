@@ -100,20 +100,21 @@ export const LogoContainer = styled.div`
 `
 
 interface ScratchProps {
-  bottom?: boolean
+  $isBottom?: boolean
 }
 
 export const Scratch = styled.div<ScratchProps>`
   background-color: transparent;
   height: 2rem;
   background-image: url(${PaperBorder});
-  transform: ${(props) => (props.bottom ? 'rotate(0deg)' : 'rotate(180deg)')};
+  transform: ${(props) =>
+    props.$isBottom ? 'rotate(0deg)' : 'rotate(180deg)'};
 
   @media ${devices.phone} {
     height: 3rem;
 
     transform: ${(props) =>
-      props.bottom
+      props.$isBottom
         ? 'rotate(1deg) translateY(-5px)'
         : 'rotate(181deg) translateY(-5px)'};
   }

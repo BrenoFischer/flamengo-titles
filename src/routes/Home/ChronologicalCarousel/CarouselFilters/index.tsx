@@ -39,7 +39,7 @@ function FilterItem({ filter }: { filter: string }) {
       isFiltered={checked}
       onClick={handleOnClick}
     >
-      <CategoryColorIndicator categoryColor={categoryToColorMap.get(filter)} />
+      <CategoryColorIndicator color={categoryToColorMap.get(filter)} />
       {filter}
       <CheckboxContainer
         checked={checked}
