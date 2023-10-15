@@ -10,7 +10,7 @@ export default function Header() {
       <LogoContainer>
         <img src={FlamengoLogo} alt="Flamengo Rowing Shield" />
       </LogoContainer>
-      <video autoPlay loop muted preload="none" poster={Poster}>
+      <video playsInline autoPlay loop muted preload="none" poster={Poster}>
         <source src={SmokeVideo} type="video/mp4" />
       </video>
       <Scratch />
