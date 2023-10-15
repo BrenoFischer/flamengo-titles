@@ -36,7 +36,8 @@ export const HeaderContainer = styled.header`
     object-fit: cover;
 
     @media ${devices.phone} {
-      height: calc(50% - 20rem);
+      top: 18rem;
+      height: calc(50% - 22rem);
     }
   }
 
@@ -83,21 +84,6 @@ export const HeaderContainer = styled.header`
   }
 `
 
-interface ScratchProps {
-  bottom?: boolean
-}
-
-export const Scratch = styled.div<ScratchProps>`
-  background-color: transparent;
-  height: 2rem;
-  background-image: url(${PaperBorder});
-  transform: ${(props) => (props.bottom ? 'rotate(0deg)' : 'rotate(180deg)')};
-
-  @media ${devices.phone} {
-    height: 3rem;
-  }
-`
-
 export const LogoContainer = styled.div`
   width: 100%;
   display: flex;
@@ -110,5 +96,25 @@ export const LogoContainer = styled.div`
     z-index: 10;
     -webkit-filter: drop-shadow(0 0 3px #000);
     filter: drop-shadow(0 0 3px #000);
+  }
+`
+
+interface ScratchProps {
+  bottom?: boolean
+}
+
+export const Scratch = styled.div<ScratchProps>`
+  background-color: transparent;
+  height: 2rem;
+  background-image: url(${PaperBorder});
+  transform: ${(props) => (props.bottom ? 'rotate(0deg)' : 'rotate(180deg)')};
+
+  @media ${devices.phone} {
+    height: 3rem;
+
+    transform: ${(props) =>
+      props.bottom
+        ? 'rotate(1deg) translateY(-5px)'
+        : 'rotate(181deg) translateY(-5px)'};
   }
 `
