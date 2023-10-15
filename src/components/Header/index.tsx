@@ -1,5 +1,5 @@
 import FlamengoLogo from '../../assets/flamengo.png'
-import SmokeVideo from '../../assets/smoke.mp4'
+import SmokeVideo from '../../assets/smoke-background.mp4'
 import Poster from '../../assets/poster.png'
 
 import { HeaderContainer, LogoContainer, Scratch } from './styles'
