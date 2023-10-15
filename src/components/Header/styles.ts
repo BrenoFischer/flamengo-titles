@@ -48,6 +48,7 @@ export const HeaderContainer = styled.header`
     align-items: center;
     mix-blend-mode: screen;
     user-select: none;
+    text-transform: uppercase;
 
     letter-spacing: 20px;
     color: #000;
@@ -57,37 +58,47 @@ export const HeaderContainer = styled.header`
     font-size: 10rem;
 
     @media ${devices.tablet} {
-      letter-spacing: 5px;
+      letter-spacing: 3px;
       font-size: 6rem;
       padding: 0 1rem;
     }
 
     @media ${devices.phone} {
       height: calc(50% - 20rem);
-      letter-spacing: 5px;
-      font-size: 6rem;
-      padding: 0 1rem;
+      font-size: 5.3rem;
     }
   }
 
   > h2 {
-    padding: 0 5rem;
-    margin-top: 4rem;
+    padding: 4rem 15rem 0 20rem;
     color: ${(props) => props.theme.white};
-    width: 100%;
+    font-size: 2.2rem;
+    letter-spacing: 3px;
     display: flex;
     justify-content: center;
-    font-size: 2rem;
 
     -webkit-filter: drop-shadow(0 0 3px #000);
     filter: drop-shadow(0 0 3px #000);
+
+    @media ${devices.laptop} {
+      padding: 4rem;
+    }
   }
+`
+
+export const LanguageSelectorContainer = styled.div`
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  display: flex;
+  gap: 0.5rem;
 `
 
 export const LogoContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  opacity: 1;
 
   img {
     margin-top: 2rem;
