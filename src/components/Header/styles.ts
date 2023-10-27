@@ -1,4 +1,5 @@
 import { styled } from 'styled-components'
+import { motion } from 'framer-motion'
 import { devices } from '../../styles/mixins'
 import CoverPhoto from '../../assets/cover.jpg'
 import PaperBorder from '../../assets/paper-border.png'
@@ -114,7 +115,7 @@ interface ScratchProps {
   $isBottom?: boolean
 }
 
-export const Scratch = styled.div<ScratchProps>`
+export const Scratch = styled(motion.div)<ScratchProps>`
   background-color: transparent;
   height: 2rem;
   background-image: url(${PaperBorder});

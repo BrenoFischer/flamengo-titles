@@ -1,12 +1,16 @@
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+
+import { Scratch } from '../Header/styles'
+
 import {
   CategoryImageContainer,
   DisabledLink,
   EnabledLink,
+  PlayerImg,
   TitleCategoryContainer,
   TitlesYearsContainer,
 } from './styles'
-import { Link } from 'react-router-dom'
-import { Scratch } from '../Header/styles'
 
 interface Title {
   year: string
@@ -29,12 +33,27 @@ export default function TitleCategory({
 
   const categoryWithoutSpaces = category.replace(/\s/g, '')
 
+  const animationDuration = 1
+
   return (
-    <TitleCategoryContainer>
+    <TitleCategoryContainer whileHover="grow">
       <Scratch $isBottom={true} />
-      <h2>
-        {category} <span>({quantityOfTitles})</span>
-      </h2>
+      <motion.h2
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: animationDuration }}
+        viewport={{ once: true }}
+      >
+        {category}{' '}
+        <motion.span
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: animationDuration }}
+          viewport={{ once: true }}
+        >
+          ({quantityOfTitles})
+        </motion.span>
+      </motion.h2>
       <TitlesYearsContainer>
         {titles.map((title) =>
           title.disabledLink ? (
@@ -50,7 +69,18 @@ export default function TitleCategory({
         )}
       </TitlesYearsContainer>
       <CategoryImageContainer>
-        <img src={playerCategoryPhoto} alt="" />
+        <PlayerImg
+          initial={{ scale: 0 }}
+          whileInView={{ scale: [1.2, 1] }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          src={playerCategoryPhoto}
+          variants={{
+            initial: { scale: 1 },
+            grow: { scale: 1.2, translateY: -2 },
+          }}
+          alt=""
+        />
       </CategoryImageContainer>
       <Scratch />
     </TitleCategoryContainer>
