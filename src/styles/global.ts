@@ -11,6 +11,26 @@ export const GlobalStyle = createGlobalStyle`
     html {
         font-size: 100%;
 
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #191310;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        scrollbar-width: thin;          /* "auto" or "thin" */
+        scrollbar-color: #888 #191310;   /* scroll thumb and track */ 
+
         @media ${devices.tablet} {
             font-size: 90%;
         }

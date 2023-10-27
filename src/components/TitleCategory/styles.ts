@@ -80,9 +80,7 @@ export const TitlesYearsContainer = styled.ul`
   margin-bottom: 2rem;
   max-height: 20rem;
   max-width: 50rem;
-  overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
@@ -93,10 +91,6 @@ export const TitlesYearsContainer = styled.ul`
     padding-right: ${PADDING_LEFT_PHONE};
     max-width: 100%;
     max-height: 100%;
-  }
-
-  &::-webkit-scrollbar {
-    display: none; /* for Chrome, Safari, and Opera */
   }
 `
 
